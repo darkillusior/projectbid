@@ -1,0 +1,111 @@
+.snowball {
+    /* display: inline-block; */
+    width: 10vw;
+    color: rgba(240, 248, 255, 0.764);
+    text-shadow:
+    0 0 7px #fffc9c,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px rgb(237, 255, 134),
+    0 0 82px rgb(255, 255, 255),
+    0 0 92px rgb(251, 255, 254),
+    0 0 102px rgb(242, 255, 175),
+    0 0 151px rgb(255, 255, 255);
+   
+    animation: fall 20s infinite linear;
+    filter: blur(0.5px);
+    
+}
+
+@keyframes fall {
+    0% {
+        opacity: 0;
+    }
+
+    3% {
+        opdacity: 0.9
+    }
+    50% {
+        transform: translate( 0, 50vh);
+    }
+
+    90% {
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate( 0, 97vh);
+    }
+
+}
+
+.navbar {
+    font-family: 'Prompt', sans-serif;
+    font-weight: bold;
+    width: 100%;
+
+    // background: -webkit-linear-gradient(to right, #343434, #303030, #1a1c1b);
+    // background: linear-gradient(to right, #1d002d, #3300b4, #000205);
+    // box-shadow: 0px 20px 50px 55px rgba(25, 0, 71, 0.504);
+   display: flex;
+   padding: 4px;
+   
+   
+    // --border-size: 3px;
+    //     --border-angle: 0turn;
+        
+    //  background-image: conic-gradient(from var(--border-angle),
+    //             #1E1E1E,
+    //             #1E1E1E 50%,
+    //             #1E1E1E),
+    //         conic-gradient(from var(--border-angle), transparent 20%, rgb(255, 255, 255), rgb(0, 217, 224));
+    //     background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)),
+    //         cover;
+    //     background-position: center center;
+    //     background-repeat: no-repeat;
+        
+    
+    //     animation: bg-spin 10s linear  infinite;
+    
+    //     @keyframes bg-spin {
+    //         to {
+    //             --border-angle: 1turn;
+    //         }
+    //     }
+    
+    //     &:hover {
+    //         animation-play-state: paused;
+    //     }
+}
+
+@property --border-angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+}
+
+.navbar input{
+    background: #2A2A2A;
+    caret-color: white;
+    color: white;
+}
+.navbar input:focus{
+    outline: none;
+}
+
+.navbar input::placeholder{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+
+/* identical to box height, or 143% */
+display: flex;
+align-items: center;
+
+/* Dark Sub text */
+color: #999CA2;
+
+
+}
