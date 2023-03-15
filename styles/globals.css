@@ -3,6 +3,30 @@
 @tailwind utilities;
 @import '/styles/main.module.scss';
 
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+  }
+}
+
+html{
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+
+
+html::-webkit-scrollbar {
+  display: none;
+}
 
 label{
     display: block;
@@ -47,4 +71,326 @@ label{
 }
 .social i{
   margin-right: 4px;
+}
+
+
+
+/* login */
+
+section {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #9999b3, #90bee0);
+  background-image: linear-gradient(to right, rgba(0, 0, 46, 0.75), rgba(28, 70, 184, 0.8)), url(https://www.hmablogs.com/wp-content/uploads/2022/06/background-1-scaled.jpg);
+  background-size: cover;
+  min-width: 50%;
+  background-attachment: fixed;
+}
+
+section .colour {
+  position: absolute;
+  filter: blur(150px);
+}
+
+section .colour:nth-child(1) {
+  top: -350px;
+  width: 600px;
+  height: 600px;
+  background: #bf4ad4;
+}
+
+section .colour:nth-child(2) {
+  left: 100px;
+  width: 500px;
+  height: 500px;
+  bottom: -150px;
+  background: #ffa500;
+}
+
+section .colour:nth-child(3) {
+  right: 100px;
+  bottom: 50px;
+  width: 300px;
+  height: 300px;
+  background: #2b67f3;
+}
+
+.box {
+  position: relative;
+}
+
+.box .square {
+  position: absolute;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.1);
+  animation-delay: calc(-1s * var(--i));
+  animation: animate 10s linear infinite;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes animate {
+
+  0%,
+  100% {
+      transform: translateY(-40px);
+  }
+
+  50% {
+      transform: translateY(40px);
+  }
+}
+
+.box .square:nth-child(1) {
+  top: -50px;
+  left: -60px;
+  width: 100px;
+  height: 100px;
+}
+
+.box .square:nth-child(2) {
+  z-index: 2;
+  top: 150px;
+  left: -100px;
+  width: 120px;
+  height: 120px;
+}
+
+.box .square:nth-child(3) {
+  z-index: 2;
+  width: 80px;
+  height: 80px;
+  right: -50px;
+  bottom: -60px;
+}
+
+.box .square:nth-child(4) {
+  left: 100px;
+  width: 50px;
+  height: 50px;
+  bottom: -80px;
+}
+
+.box .square:nth-child(5) {
+  top: -80px;
+  left: 140px;
+  width: 60px;
+  height: 60px;
+}
+
+.container {
+  width: 400px;
+  display: flex;
+  min-height: 400px;
+  position: relative;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.signup-container{
+  width: 500px;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  position: relative;
+}
+
+.form h2 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  position: relative;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+.form h2::before {
+  left: 0;
+  width: 80px;
+  height: 4px;
+  content: "";
+  bottom: -10px;
+  background: #fff;
+  position: absolute;
+}
+
+.form .input__box {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form .input__box input {
+  width: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  border-radius: 35px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.form input::placeholder {
+  color: #fff;
+}
+
+.form .input__box input[type="submit"] {
+  color: #666;
+  cursor: pointer;
+  background: #fff;
+  max-width: 100px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.form .input__box input[type="submit"]:hover{
+  background: #358bdb;
+  color: white;
+}
+.forget {
+  color: #fff;
+  margin-top: 5px;
+}
+
+.forget a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+.input__box .btn{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  border-radius: 35px;
+  text-align: center;
+  cursor: pointer;
+ background: rgb(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.input__box .btn:hover{
+  background: #bf4ad4;
+  color: white;
+}
+
+.signup{
+  position: relative;
+  overflow: hidden;
+}
+
+/* home */
+
+.home{
+  background-image: linear-gradient(to right, rgba(200, 8,207, 0.75), rgba(28, 70, 184, 0.8)), url(https://www.hmablogs.com/wp-content/uploads/2022/06/background-1-scaled.jpg);
+  background-size: cover;
+  min-width: 50%;
+  background-attachment: fixed;
+  color: white;
+  /* border: 1px solid red; */
+  padding-top: 5rem;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2% 5%;
+}
+.row .column1 {
+  padding-right: 50px;
+}
+.column1 h1 {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+.column1 p {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.column1 button {
+  width: 150px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border-style: none;
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.5);
+ 
+}
+
+.column1 button:hover{
+  color: black;
+  background-color: rgba(255, 255, 255, 1);
+}
+/* Header content responsive */
+@media screen and (max-width: 980px) {
+  .column2 img {
+    width: 350px;
+  }
+  .column1 h1 {
+    font-size: 40px;
+  }
+  .column1 p{
+    font-size: 17px;
+  }
+  .row {
+    margin-top: 80px;
+  }
+}
+ 
+@media screen and (max-width: 600px) {
+  .home{
+    background-image: linear-gradient(to right, rgba(200, 8,207, 0.75), rgba(28, 70, 184, 0.8)), url(https://www.hmablogs.com/wp-content/uploads/2022/06/background-1-scaled.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    /* border: 1px solid red; */
+    padding-top: 0rem;
+    height: 100vh;
+  }
+  .column1 h1 {
+    font-size: 35px;
+  }
+  .row {
+    flex-direction: column;
+ 
+  }
+  .row .column1 {
+    padding: 30px;
+  }
 }

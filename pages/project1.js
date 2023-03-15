@@ -17,7 +17,7 @@ function Project1() {
    <>
     <main className={styles.bg}>
     <Navbar />     
-    <div className=' h-auto p-2 '>
+    <div className="bg-g">
     <BidForm showBidForm={showBidForm} setShowBidForm={setShowBidForm} />
      <div className='m-2 flex items-center  '>    
     <img className={'h-32 w-32 m-2  rounded-full '+styles.userPic} src='/random.jpg '></img>

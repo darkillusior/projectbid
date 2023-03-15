@@ -4,7 +4,7 @@ import style2 from '../../styles/main.module.scss'
 function Card() {
   return (
   <>
-  <div className={'bg-white  bg-opacity-25 hover:translate-y-1 w-full md:w-[28%]   mx-2 my-1  text-black rounded-md hover:cursor-pointer  hover:bg-opacity-60  shadow-md  flex flex-col sm:flex-col '} >
+  <div className={'gradient-z hover:translate-y-1 w-full   mx-2 my-1  text-black rounded-md hover:cursor-pointer  hover:bg-opacity-60  shadow-md  flex flex-col sm:flex-col '} >
     
     <div className=' flex   justify-center items-center p-1 '>    
 
@@ -15,14 +15,14 @@ function Card() {
  
       <div className='flex flex-col  mb-5 m-1'>
 
-        <div className=' w-1/2 font-bold text-xl font-serif text-black '>Shopler.com</div> 
+        <div className=' w-1/2 font-bold text-xl font-serif text-white '>Shopler.com</div> 
         <div className='flex flex-col items-baseline'>
-        <div className=' font-semibold text-lg text-slate-600'>Tech stack</div>
-        <div className=' w-full   overflow-hidden text-violet-500 text-base font-semibold  break-words'>React, MongoDb, Nodejs</div>
+        <div className=' font-semibold text-lg text-slate-300'>Tech stack</div>
+        <div className=' w-full   overflow-hidden text-slate-200 text-base font-semibold  break-words'>React, MongoDb, Nodejs</div>
         </div>
         </div>
-        <div className={styles.liveBtn}>
-          <button>live preview</button>
+        <div className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+          <button type="button">Live Preview</button>
         </div>
            
         </div>
