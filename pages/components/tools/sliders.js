@@ -55,24 +55,24 @@ export default function Slider() {
    <div className="flex justify-evenly p-6">
     
     <div className="flex flex-col">
-     <h1 className=" w-[80%] m-2 text-center font-bold text-3xl font-serif text-green-600 " >Screenshots:</h1>  
+     <h1 className=" w-[80%] m-2 text-center font-bold text-3xl font-sans text-white " >Screenshots</h1>  
     <div className="p-2  relative flex items-center" ref={slideRef}>
     
-    <button className="bg-black text-white p-1 rounded-full bg-opacity-50 cursor-pointer hover:bg-opacity-100 transition"onClick={handleOnPrevClick}> <img src="/left2.png"></img>
+    <button className="text-white p-1 rounded-full  cursor-pointer hover:bg-opacity-100 transition w-10"onClick={handleOnPrevClick}> <img src="/left.png"></img>
     </button>
     
-    <img  className="m-2 w-[80%] h-96 " src={featuredProducts[currentIndex]} alt="" />
+    <img  className="m-2 w-[90%] h-96 rounded-lg " src={featuredProducts[currentIndex]} alt="" />
     
-    <button className="bg-black text-white p-1 rounded-full bg-opacity-50 cursor-pointer hover:bg-opacity-100  transition"onClick={handleOnNextClick}><img src="/right2.png"></img>
+    <button className="text-white p-1 rounded-full  cursor-pointer hover:bg-opacity-100 transition w-10"onClick={handleOnNextClick}><img src="/right.png"></img>
     </button>
     </div> 
    </div>
     
       
-    <div className="flex flex-col">
-     <h1 className="  m-2 text-center font-bold text-3xl font-serif text-green-600 " >Demo Video:</h1>  
-    <video className=' h-96  m-auto' src='/demovideo2.mp4' controls></video>    
-    </div>
+    {/* <div className="flex flex-col">
+     <h1 className="  m-2 text-center font-bold text-3xl font-sans text-white " >Demo Video</h1>  
+    <video className=' h-96  m-2 rounded-lg' src='/demovideo2.mp4' controls></video>    
+    </div> */}
    
     </div>
     
