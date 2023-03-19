@@ -59,7 +59,7 @@ console.log(poststart)
     <div className='bg-white text-black z-30 w-44 right-12 absolute duration-700 ease-in-out transform transition-transform rounded-md'>
       <div className='block rounded-md'>
         <div className='text-center p-2 hover:bg-slate-400 rounded-sm'><a href='/add-project'>Add Project</a></div>
-        <div className='text-center p-2 hover:bg-slate-400 rounded-sm'><a href='my-projects'>My Projects</a></div>
+        <div className='text-center p-2 hover:bg-slate-400 rounded-sm'><a href='/my-profile'>My Profile</a></div>
         <div className='text-center p-2 rounded-sm hover:bg-slate-400'><a href='logout'>Logout</a></div>
       </div>
     </div>
