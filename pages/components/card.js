@@ -4,7 +4,7 @@ import style2 from '../../styles/main.module.scss'
 function Card() {
   return (
   <>
-  <div className={'gradient-z hover:translate-y-1 w-full   mx-2 my-1  text-black rounded-md hover:cursor-pointer  hover:bg-opacity-60  shadow-md  flex flex-col sm:flex-col '} >
+  <div className={'gradient-z hover:translate-y-1 w-full   mx-2 my-1  text-black rounded-md hover:cursor-pointer  hover:bg-opacity-60  shadow-md  flex flex-col sm:flex-col card'} >
     
     <div className=' flex   justify-center items-center p-1 '>    
 
