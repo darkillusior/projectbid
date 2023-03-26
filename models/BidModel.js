@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const BidSchema= new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User" },
- 
+ name:{type: String},
+ userimg:{type:String},
    img:[String],
 
   projectName:{type: String},
@@ -12,16 +13,28 @@ const BidSchema= new Schema({
 
   rating:[{type:String,default:0}], 
 
-  video:{type:String},
+  link:{type: String},
 
   discription:{type:String},
 
   bid: [{ user: { type: Schema.Types.ObjectId, ref: "User" },
-          price:{type:Number}       
+          price:{type:Number}  ,
+          contact:{type: Number},
+          name:{type:String},
+          img:{type:String}
+               
  }],
+ 
+ idea: [{ user: { type: Schema.Types.ObjectId, ref: "User" },
+idea:{type:String}  ,
+ contact:{type: Number},
+ price:{type: Number},
+ name:{type:String},
+ img:{type:String}
+}],
   
   bidprice:{type:Number},
-  ideaprice:{type:Number},
+
 
 
   

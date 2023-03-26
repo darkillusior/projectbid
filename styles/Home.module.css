@@ -1,26 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@1,300&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Prompt:ital,wght@1,300&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap");
-
-.snowfall{  
-    display: flex;
-    justify-content: space-between;
-    height: 100vh;
-  overflow: hidden;
-}
 .bg{
 /* background: #00002f; */
   
-    background: linear-gradient(to right, #00002e, #000040);
+ 
     /* background: linear-gradient(160deg, rgb(177, 80, 247) 5%, rgb(93, 127, 238) 50%, rgb(189, 72, 255) 83%); */
-    background-image: linear-gradient(to right, rgba(0, 0, 46, 0.75), rgba(28, 70, 184, 0.8)), url(https://www.hmablogs.com/wp-content/uploads/2022/06/background-1-scaled.jpg);
+    background-image: url(/northern-lights-g3da660618_1920.jpg);
     background-size: cover;
     min-width: 50%;
     background-attachment: fixed;
     overflow: hidden;
-    
+    background-repeat: no-repeat;
     position: relative;
    
     z-index: 0;
@@ -31,16 +21,16 @@
   
     /* background: linear-gradient(to right, #00002e, #000040); */
     /* background: linear-gradient(160deg, rgb(177, 80, 247) 5%, rgb(93, 127, 238) 50%, rgb(189, 72, 255) 83%); */
-    background-image: linear-gradient(to right, rgba(4, 27, 34, 0.75), rgba(0, 9, 37, 0.8)), url(https://www.hmablogs.com/wp-content/uploads/2022/06/background-1-scaled.jpg);
+
     background-image: linear-gradient(to right, rgba(0, 0, 46, 0.75), rgba(28, 70, 184, 0.8)), url(https://www.hmablogs.com/wp-content/uploads/2022/06/background-1-scaled.jpg);
     background-size: cover;
-    min-width: 50%;
+    min-width: 100%;
     background-attachment: fixed;
     
     position: relative;
-    min-width: 50%;
+    
     z-index: 0;
-    height: 100vh;
+
     padding-top: 18px;
     padding-bottom: 14px;
     display: flex;
@@ -52,7 +42,7 @@
 .bgA{
     /* background: #00002f; */
       
-        background: linear-gradient(to right, #00002e, #000040);
+
         /* background: linear-gradient(160deg, rgb(177, 80, 247) 5%, rgb(93, 127, 238) 50%, rgb(189, 72, 255) 83%); */
         background-image: linear-gradient(to right, rgba(0, 0, 46, 0.75), rgba(28, 70, 184, 0.8)), url(https://www.hmablogs.com/wp-content/uploads/2022/06/background-1-scaled.jpg);
         background-size: cover;
@@ -72,54 +62,7 @@
 
 }
 
-.heading {
-    font-size: 30px;
-    text-align: center;
-    padding: 4px;
-    color: #ffffffc9;
-    text-shadow: 0 0 5px #668cf7, 0 0 10px #000000, 0 0 5px #668cf7, 0 0 20px #668cf7, 0 0 5px #668cf7, 0 0 30px #668cf7, 0 0 5px #000000; 
-    
-    animation: reveal 3000ms ease-in-out forwards 200ms,
-            glow 2500ms linear infinite 2000ms;
-}
 
-
-
- @keyframes reveal {
-    
-
-     100% {
-         background-size: 300% 300%;
-     }
- }
-
- @keyframes glow {
-     40% {
-         text-shadow: 0 0 8px white;
-     }
- }
-  @keyframes glow2 {
-      40% {
-          text-shadow: 0 0 29px white;
-      }
-  }
-
-/* .card {
-    
-    position: relative;
-  
-}
-
-.card::after {
-    content: '';
-    background-color: white;
-    width: 100%;
-    position: absolute;
-    border-radius: 40px;
-    height: 90%; 
-    opacity: 0.08;
-    
-} */
 
 .userPic {
     position: relative;
@@ -301,9 +244,9 @@ transition: height 2s;
 .container .btn:nth-child(1)::before,
 /*chnage 1*/
 .container .btn:nth-child(1)::after {
-    background: #86ff49;
-    box-shadow: 0 0 3px #338600, 0 0 15px #008709, 0 0 30px #00ec0c,
-        0 0 60px #00ff37;
+    background: #49fffc;
+    box-shadow: 0 0 3px #004a86, 0 0 15px #005887, 0 0 30px #00dcec,
+        0 0 60px #00c8ff;
         color: black;
 }
 

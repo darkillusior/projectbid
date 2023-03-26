@@ -15,7 +15,18 @@ const UserSchema = new Schema(
 
     points:{   type:Number, default:0 },
     userimg:{type: String},
-   
+   mybid:[{
+   postId: { type: Schema.Types.ObjectId},
+   projectName:{type:String},
+   img:{type:String}
+
+   }],
+   myidea:[{
+    postId: { type: Schema.Types.ObjectId},
+    projectName:{type:String},
+    img:{type:String}
+ 
+    }]
   
   },
   { timestamps: true }

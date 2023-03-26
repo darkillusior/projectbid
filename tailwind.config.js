@@ -4,9 +4,6 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-
-    // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -14,7 +11,7 @@ module.exports = {
       backgroundImage: {
         'gradient-radial-t': 'radial-gradient(circle at top, var(--tw-gradient-stops))',
         'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
-        'gradient-z': 'rgb(255, 255, 255, 0.5)'
+     
       },
       borderWidth: {
         DEFAULT: '0.1px',
@@ -24,7 +21,26 @@ module.exports = {
         '4': '4px',
         '6': '6px',
         '8': '8px',
-      }    },
+      },
+    
+      keyframes: {
+        'fade-up-down': {
+            '0%': {
+                opacity: '0',
+                transform: 'translateY(-10px)'
+            },
+            '100%': {
+                opacity: '1',
+                transform: 'translateY(20px)'
+            },
+        }
+    },
+    animation: {
+        'fade-up-down': 'fade-up-down 1s ease-out'
+    }
+    
+    
+    },
   },
   plugins: [],
 }
