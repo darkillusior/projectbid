@@ -37,7 +37,7 @@ function Project1({ postsData }) {
             Shopler.com
           </h1>
         </div>
-        <button className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-3/1 mx-5 mr-2 mb-2" type="button">Personalization</button>
+        <button className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-3/1 mx-5 mr-2 mb-2" type="button">Personalization</button>
         </div>
        <div className="mt-10">
        <BidForm showBidForm={showBidForm} setShowBidForm={setShowBidForm} />
