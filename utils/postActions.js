@@ -12,7 +12,7 @@ export const submitNewPost = async (
   data
 ) => {
   try {
-  console.log("090",data)
+ 
    await Axios.post("/post",  {data});
 
   } catch (error) {
@@ -32,12 +32,12 @@ export const deletePost = async (postId, setPosts, setShowToastr) => {
   }
 };
 
-export const bidPost = async (postId,price,userId,setBids) => {
+export const bidPost = async (postId,data,setBids) => {
   try {
  
-      
-      await Axios.post(`/bid/${postId}`,{price});
-      setBids(prev => [...prev, { user: userId }]);
+     
+      await Axios.post(`post/bid/${postId}`,{data});
+      setBids(prev => [...prev,  {bid:[data]}]);
     
     //
    
@@ -45,12 +45,14 @@ export const bidPost = async (postId,price,userId,setBids) => {
     alert(catchErrors(error));
   }
 };
-export const updateBidPost = async (postId,userId, setLikes,setBids) => {
+export const updateBidPost = async (postId, contact,img,name,setLikes,setBids) => {
   try {
  
       
-      await Axios.post(`/updatebid/${postId}`,{price});
-      setBids(prev => [...prev, { user: userId }]);
+      await Axios.post(`/updatebid/${postId}`,{
+        price,contact,img,name
+      });
+      setBids(prev => [...prev,  {price,contact,name,img}]);
     
     //
    
@@ -59,6 +61,34 @@ export const updateBidPost = async (postId,userId, setLikes,setBids) => {
   }
 };
 
+export const ideaPost = async (postId,price,name,img,userId,setBids) => {
+  try {
+ 
+      
+      await Axios.post(`/idea/${postId}`,{price,contact,name,img});
+      setBids(prev => [...prev, {price,contact,name,img}]);
+    
+    //
+   
+  } catch (error) {
+    alert(catchErrors(error));
+  }
+};
+export const updateideaPost = async (postId,userId, contact,img,name,setLikes,setBids) => {
+  try {
+ 
+      
+      await Axios.post(`/updateidea/${postId}`,{
+        price,contact,img,name
+      });
+      setBids(prev => [...prev, {price,contact,name,img}]);
+    
+    //
+   
+  } catch (error) {
+    alert(catchErrors(error));
+  }
+};
 
 
 

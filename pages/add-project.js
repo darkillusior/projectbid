@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Navbar from './components/navbar'
+
 import styles from '../styles/Home.module.css'
 import Snowfall2 from 'react-snowfall'
 import uploadPic from '../utils/uploadPicToCloudinary';
@@ -47,7 +47,7 @@ await submitNewPost(data)
   return (
     <>
     <main className={styles.bgA}>
-    <Navbar /> 
+    
     <Snowfall2 style={{ filter: 'blur(1px)' }} snowflakeCount={50} speed={[0.0, 0.1]} wind={[0.0, 0.1]} />
 
    <div className={styles.form +" text-6xl m-2 ml-4 relative px-5 overflow-hidden z-20"}>
