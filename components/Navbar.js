@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 
 
@@ -12,7 +12,7 @@ function Navbar() {
   const [hidden, sethidden] = useState("");
   const [hidden2, sethidden2] = useState(false);
  console.log("gg",hover)
-  useLayoutEffect(() => {
+  useEffect(() => {
     let postend = 0;
     let position = document.getElementById("position");
 

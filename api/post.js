@@ -119,7 +119,9 @@ router.post("/bid/:postId", authMiddleware, async (req, res) => {
      const newpost={
       postId:postId,
       projectName:post.projectName,
-      img:post.img[0]
+      img:post.img[0],
+      price:price,
+      contact:contact
      }
      user.mybid.push(newpost)
      await  user.save()
@@ -135,52 +137,51 @@ router.post("/updatebid/:postId", authMiddleware, async (req, res) => {
      const { postId } = req.params;
    
      const { userId } = req;
-    const {price,contact} = req.body;
-    const post = await BidModel.findOne({
-      _id:postId,
-      "bid.user":userId,
-      
-    },{bid: {
-      $elemMatch: {
-        user: userId,
-      
-      },
-    },}
-    );
+    const {price,contact} = req.body.data;
    
-    if (!post) {
+    const post = await BidModel.findById(postId );
+  if (!post) {
       return res.status(404).send("No Post found");
     }
+  const bids= post.bid.filter(bid=>bid.user.toString()===  userId);
+   if(price)
+   { bids[0].price=price
+  }
    
-     post.bid[0].price=price
-     if(contact){
-      post.bid[0].contact=contact
-     }
+    if(contact){
 
+      bids[0].contact=contact
+    }
     
-    await post.save();
-    const user= await UserModel.findOne({
-      _id:userId,
-      "mybid.postId":postId,
-      
-    },{mybid: {
-      $elemMatch: {
-        postId: postId,
-      
-      },
-    },}
-    );
-   
+  
+   await post.save()
+    
+    
+  
+    const user= await UserModel.findById(userId );
+     
+     
 
+    const userbids= user.mybid.filter(bid=>bid.postId.toString()=== postId);
+  
+    userbids[0].projectName=post.projectName
+    userbids[0].img=post.img[0]
+    if(price)
+   { userbids[0].price=price
+  }
    
-     user.mybid[0].projectName=post.projectName,
-     user.mybid[0].img=post.img[0]
+    if(contact){
+
+      userbids[0].contact=contact
+    }
+    
+
+
  
-   
-    await  user.save()
+     await  user.save()
 
 
-    return res.status(200).send("Post liked");
+    return res.status(200).send("Post updated");
   } catch (error) {
     console.error(error);
     return res.status(500).send(`Server error`);
@@ -191,7 +192,7 @@ router.post("/idea/:postId", authMiddleware, async (req, res) => {
      const { postId } = req.params;
    
      const { userId } = req;
-    const {youridea,contact,price} = req.body;
+    const {contact,price,youridea,} = req.body.data;
 
     const post = await BidModel.findById(postId)
     if (!post) {
@@ -200,7 +201,7 @@ router.post("/idea/:postId", authMiddleware, async (req, res) => {
    
 
 
-    const isBid = post.bid.some(bid => bid.user.toString() === userId);
+    const isBid = post.idea.some(bid => bid.user.toString() === userId);
     if (isBid) {
       return res.status(401).send(" already there ");
     }
@@ -213,7 +214,9 @@ router.post("/idea/:postId", authMiddleware, async (req, res) => {
     const newpost={
      postId:postId,
      projectName:post.projectName,
-     img:post.img[0]
+     img:post.img[0],
+     price:price,
+     contact:contact
     }
     user.idea.push(newpost)
     await  user.save()
@@ -226,56 +229,54 @@ router.post("/idea/:postId", authMiddleware, async (req, res) => {
 });
 router.post("/updateidea/:postId", authMiddleware, async (req, res) => {
   try {
-     const { postId } = req.params;
+    const { postId } = req.params;
    
-     const { userId } = req;
-    const {price,contact,youridea} = req.body;
-    const post = await BidModel.findOne({
-      _id:postId,
-      "idea.user":userId,
-      
-    },{idea: {
-      $elemMatch: {
-        user: userId,
-      
-      },
-    },}
-    );
-   
-    if (!post) {
-      return res.status(404).send("No Post found");
-    }
-   
-     post.idea[0].price=price
-     if(contact||youridea){
-      post.idea[0].contact=contact
-      post.idea[0].idea=youridea
-     }
+    const { userId } = req;
+   const {price,contact} = req.body.data;
+  
+   const post = await BidModel.findById(postId );
+ if (!post) {
+     return res.status(404).send("No Post found");
+   }
+ const bids= post.idea.filter(bid=>bid.user.toString()===  userId);
+  if(price)
+  { bids[0].price=price
+ }
+  
+   if(contact){
 
-    
-    await post.save();
-    
-    const user= await UserModel.findOne({
-      _id:userId,
-      "myidea.postId":postId,
-      
-    },{myidea: {
-      $elemMatch: {
-        postId: postId,
-      
-      },
-    },}
-    );
+     bids[0].contact=contact
+   }
    
-
-   
-     user.myidea[0].projectName=post.projectName,
-     user.myidea[0].img=post.img
  
+  await post.save()
    
+   
+ 
+   const user= await UserModel.findById(userId );
+    
+    
+
+   const userbids= user.myidea.filter(bid=>bid.postId.toString()=== postId);
+ 
+   userbids[0].projectName=post.projectName
+   userbids[0].img=post.img[0]
+   if(price)
+  { userbids[0].price=price
+ }
+  
+   if(contact){
+
+     userbids[0].contact=contact
+   }
+   
+
+
+
     await  user.save()
 
-    return res.status(200).send("Post liked");
+
+   return res.status(200).send("Post updated");
   } catch (error) {
     console.error(error);
     return res.status(500).send(`Server error`);

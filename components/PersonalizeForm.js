@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
-import { bidPost,updateBidPost } from "../utils/postActions";
-function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
+import { ideaPost,updateideaPost } from "../utils/postActions";
+function PersonForm({ showBidForm, setShowBidForm,postId,setBid,ideatrue }) {
   const [data, setData] = useState({
     price: null,
     contact: null,
@@ -16,10 +16,10 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    if(bidtrue){
-      updateBidPost(postId,data,setBid)
+    if(ideatrue){
+      updateideaPost(postId,data,setBid)
     }else{
-      bidPost(postId,data,setBid);
+      ideaPost(postId,data,setBid);
     }
   };
   return (
@@ -36,7 +36,7 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
             <div className="m-2 flex justify-center">
               {" "}
               <h1 className="font-semibold sm:text-3xl ">
-                Enter Bidding Details:
+                Enter idea Details:
               </h1>
             </div>{" "}
             <div className="m-2 flex justify-center">
@@ -52,7 +52,7 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
               ></input>
             </div>
             <div className="m-2 flex justify-center">
-              <label className={styles.label + " m-2"}>Enter BID Amount</label>
+              <label className={styles.label + " m-2"}>Enter idea Amount</label>
               <input
                 className={
                   styles.input + " text-slate-800 w-11/12 font-bold m-2 p-2"
@@ -72,7 +72,7 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
               >
                 Cancel
               </button>
-              <button className={styles.btn5}>BID</button>
+              <button className={styles.btn5}>Add</button>
             </div>
           </form>
         </>
@@ -81,4 +81,4 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
   );
 }
 
-export default BidForm;
+export default PersonForm;

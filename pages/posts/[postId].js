@@ -6,14 +6,26 @@ import Slider from "../../components/tools/sliders";
 import BidForm from "../../components/BidForm";
 import axios from "axios";
 import baseUrl from "../../utils/baseUrl";
-function Post({ postsData }) {
+import PersonForm from "../../components/PersonalizeForm";
+function Post({ postsData,user }) {
+
   const [post, setPost] = useState( postsData||[]);
+  const [bid, setBids] = useState( post.bid||[]);
+  const [idea, setIdea] = useState( post.idea||[]);
   const [viewdescription, setviewdescription] = useState(false);
   const [showBidForm, setShowBidForm] = useState(false);
+  const [showIdeaForm, setShowIdeaForm] = useState(false);
+  let bidtrue=post.bid.some(bid => bid.user.toString() === user._id)
+  let ideatrue=post.bid.some(bid => bid.user.toString() === user._id)
   const bidform = () => {
     setShowBidForm(true);
+    setShowIdeaForm(false)
   };
-  console.log(postsData);
+  const ideaform = () => {
+    setShowBidForm(false);
+    setShowIdeaForm(true)
+  };
+
   const viewmoredescription = () => {
     setviewdescription(!viewdescription);
   };
@@ -39,7 +51,7 @@ function Post({ postsData }) {
             <div className="flex justify-between items-center  ">
               <div className={" cursor-pointer " + styles.container }>
                 <div className={styles.btn} onClick={bidform}>
-                  <a>BID</a> 
+                 {bidtrue?<a>BIDUpdate</a>:<a>BID</a>} 
 
                 </div>
                 <h1 className="text-white text-2xl font-bold py-2 px-5">  min: &#8377;{post.bidprice
@@ -49,6 +61,7 @@ function Post({ postsData }) {
                  <button
                 className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-3/1 mx-5 mr-2 mb-2"
                 type="button"
+                onClick={ideaform}
               >
                 Personalization
               </button>
@@ -64,12 +77,23 @@ function Post({ postsData }) {
           </div>
           <div className="mt-10">
             <BidForm
+             bidtrue={bidtrue}
               postId={post._id}
               name={post.projectName}
               img={post.img[0]}
               showBidForm={showBidForm}
               setShowBidForm={setShowBidForm}
-              setBid={setPost}
+              setBid={setBids}
+            />
+            <PersonForm
+             idaetrue={ideatrue}
+             postId={post._id}
+             name={post.projectName}
+             img={post.img[0]}
+             showBidForm={showIdeaForm}
+             setShowBidForm={setShowIdeaForm}
+             setideas={setIdea}
+            
             />
           </div>
           <div
@@ -78,7 +102,7 @@ function Post({ postsData }) {
               styles.bgbox
             }
           >
-            <div className=" w-full sm:w-1/2">
+            <div className=" w-full sm:w-1/2 ">
               <Slider img={post.img} />
             </div>
 
@@ -153,26 +177,21 @@ function Post({ postsData }) {
                 </tr>
               </thead>
               <tbody className="">
-                <tr className="bg-slate-900/50 border-slate-800 border hover:bg-slate-800/50 cursor-pointer ">
-                  <td
-                    className={
-                      "w-2/4 text-xll p-2 text-center font-mono text-gray-300"
-                    }
-                  >
-                    gaurav bahuguna
-                  </td>
-                  <td className="w-2/4 text-xl p-2 text-center font-serif text-green-600">
-                    500$
-                  </td>
-                </tr>
-                <tr className="bg-slate-900/50 border-slate-800 border  hover:bg-slate-800/50 cursor-pointer">
-                  <td className="w-2/4 text-xll p-2 text-center font-mono text-gray-300">
-                    gaurav bahuguna
-                  </td>
-                  <td className="w-2/4 text-xl p-2 text-center font-serif text-green-600">
-                    500$
-                  </td>
-                </tr>
+              {bid.map(bids=>(
+                 <tr className="bg-slate-900/50 border-slate-800 border hover:bg-slate-800/50 cursor-pointer ">
+                 <td
+                   className={
+                     "w-2/4 text-xll p-2 text-center font-mono text-gray-300"
+                   }
+                 >
+                 {bids.name}
+                 </td>
+                 <td className="w-2/4 text-xl p-2 text-center font-serif text-green-600">
+                  {bids.price}
+                 </td>
+               </tr>
+              ))} 
+            
               </tbody>
             </table>
           </div>

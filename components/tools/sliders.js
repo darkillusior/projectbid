@@ -57,7 +57,7 @@ export default function Slider({img}) {
     
   
     
-    <img  className="m-1 w-full  rounded-lg " src={img[currentIndex]} alt="" />
+    <img  className="m-1 w-full max-h-96  rounded-lg " src={img[currentIndex]} alt="" />
     
 
     </div> 

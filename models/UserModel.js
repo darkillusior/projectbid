@@ -18,13 +18,17 @@ const UserSchema = new Schema(
    mybid:[{
    postId: { type: Schema.Types.ObjectId},
    projectName:{type:String},
-   img:{type:String}
+   img:{type:String},
+   price:{type:Number},
+   contact:{type:Number}
 
    }],
    myidea:[{
     postId: { type: Schema.Types.ObjectId},
     projectName:{type:String},
-    img:{type:String}
+    img:{type:String},
+    price:{type:Number},
+    contact:{type:Number}
  
     }]
   
