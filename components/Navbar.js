@@ -69,14 +69,14 @@ function Navbar() {
           onMouseLeave={()=>{setHover("1")}}
             className={`px-6 z-40 ${hover!="1"&&"blur-[2px]"}  hover:bg-gradient-radial py-1  from-transparent to-cyan-400  transition ease-in delay-150 ${hidden} `}
           >
-           <a className={`font-bold   `} href="">Home</a> 
+           <a className={`font-bold   `} href="/">Home</a> 
           </div>
           <div
            onMouseEnter={()=>{setHover2("2")}}
            onMouseLeave={()=>{setHover2("2")}}
             className={`px-6 z-40 ${hover2!="2"&&"blur-[2px]"}   hover:bg-gradient-radial from-transparent to-cyan-400   py-1 font-bold transition ease-in delay-200 ${hidden}`}
           >
-            <a className={`font-bold  `} href="">Profile</a> 
+            <a className={`font-bold  `} href="/my-profile">Profile</a> 
           </div>
           <div
            onMouseEnter={()=>{setHover3("3")}}
