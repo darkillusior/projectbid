@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-
+import FullScreenModel from "../components/FullScreenModel"
 
 
 function Navbar() {
@@ -99,6 +99,11 @@ function Navbar() {
             className={`px-6  z-40  ${hover4!="4"&&"blur-[2px]"}   hover:bg-gradient-radial  from-transparent to-cyan-400   font-bold transition ease-in delay-500 ${hidden}`}
           >
             Login
+          </div>
+          <div
+            className={`px-6  z-40   from-transparent to-cyan-400   font-bold transition ease-in delay-500 ${hidden}`}
+          >
+            <FullScreenModel />
           </div>
     
         </div>
