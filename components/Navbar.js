@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
+import FullScreenModel from "../components/FullScreenModel"
+
 
 function Navbar() {
   const [showCollapse, setShowCollapse] = useState(false);
@@ -136,6 +138,12 @@ function Navbar() {
           >
             Login
           </div>
+          <div
+            className={`px-6  z-40   from-transparent to-cyan-400   font-bold transition ease-in delay-500 ${hidden}`}
+          >
+            <FullScreenModel />
+          </div>
+    
         </div>
       </div>
     </>
