@@ -2,10 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BidSchema= new Schema({
+  
   user: { type: Schema.Types.ObjectId, ref: "User" },
- name:{type: String},
- userimg:{type:String},
-   img:[String],
+   
+  name:{type: String},
+  
+  userimg:{type:String},
+   
+  img:[String],
 
   projectName:{type: String},
 

@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Card({post}) {
+  console.log(post)
   return (
   <>
   <div className={'gradient-z hover:translate-y-1  sm:w-96   mx-2 my-1  text-black rounded-md hover:cursor-pointer  hover:bg-opacity-60  shadow-md    card'} >
@@ -14,7 +15,7 @@ function Card({post}) {
  
       <div className='flex flex-col mx-4 my-5  mb-5 '>
 
-        <div className=' w-1/2 font-bold text-xl font-serif text-white '>{post.projectName.toUpperCase()}</div> 
+        <div className='  font-bold text-xl font-serif text-white '>{post.projectName.toUpperCase()}</div> 
         <div className='flex flex-col items-baseline'>
         <div className=' font-semibold text-lg text-slate-300'>Tech Stack</div>
         <div className=' w-full   overflow-hidden text-slate-200 text-base font-semibold break-all  break-words'>{post.tech.toLowerCase()}</div>

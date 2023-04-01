@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body{
+  background: black
+}
 @layer utilities {
   @layer components {
     /* Hide scrollbar for Chrome, Safari and Opera */

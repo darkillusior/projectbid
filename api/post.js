@@ -126,7 +126,7 @@ router.post("/bid/:postId", authMiddleware, async (req, res) => {
      user.mybid.push(newpost)
      await  user.save()
 
-    return res.status(200).send("Post liked");
+    return res.status(200).send("bided");
   } catch (error) {
     console.error(error);
     return res.status(500).send(`Server error`);
@@ -221,7 +221,7 @@ router.post("/idea/:postId", authMiddleware, async (req, res) => {
     user.idea.push(newpost)
     await  user.save()
 
-    return res.status(200).send("Post liked");
+    return res.status(200).send("Posted");
   } catch (error) {
     console.error(error);
     return res.status(500).send(`Server error`);
@@ -283,8 +283,90 @@ router.post("/updateidea/:postId", authMiddleware, async (req, res) => {
   }
 });
 
-// UNLIKE A POST
+//delete
+router.delete("/biddelete/:postId", authMiddleware, async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const { userId } = req;
 
+    const post = await BidModel.findById(postId);
+    if (!post) return res.status(404).send("Post not found");
+
+    const index = post.bid.findIndex(bid =>bid.user.toString() === userId);
+
+  if (index === -1) {
+      return res.status(404).send("No bid found");
+    }
+    const bid = post.bid[index];
+
+    const deleteComment = async () => {
+      post.bid.splice(index, 1);
+
+      await post.save();
+      return res.status(200).send("Deleted Successfully");
+    };
+const user = await UserModel.findById(userId);
+
+
+ 
+    const  mybidindex = user.mybid.findIndex(bid =>bid.postId.toString() === postId);
+    if (index === -1) {
+     return res.status(404).send("No bid found");
+   }       
+    user.mybid.splice(mybidindex,1)
+    await user.save();
+    if (bid.user.toString() !== userId) {
+      
+      if (user.role === "root") {
+        await deleteComment();
+      } else {
+        return res.status(401).send("Unauthorized");
+      }
+    }
+    await deleteComment();
+   
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send(`Server error`);
+  }
+});
+
+router.delete("/ideadelete/:postId", authMiddleware, async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const { userId } = req;
+
+    const post = await BidModel.findById(postId);
+    if (!post) return res.status(404).send("Post not found");
+
+    const index = post.idea.findIndex(bid =>bid.user === userId);
+    if (index === -1) {
+      return res.status(404).send("No bid found");
+    }
+    const bid = post.idea[index];
+
+    const deleteComment = async () => {
+      post.idea.splice(index, 1);
+
+      await post.save();
+      return res.status(200).send("Deleted Successfully");
+    };
+
+    if (bid.user.toString() !== userId) {
+      const user = await UserModel.findById(userId);
+      if (user.role === "root") {
+        await deleteComment();
+      } else {
+        return res.status(401).send("Unauthorized");
+      }
+    }
+
+    await deleteComment();
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send(`Server error`);
+  }
+});
 
 
 

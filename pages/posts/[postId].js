@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import styles from "../../styles/Home.module.css";
-
+import {deletePost  } from "../../utils/postActions";
 import Slider from "../../components/tools/sliders";
 import BidForm from "../../components/BidForm";
 import axios from "axios";
@@ -15,8 +15,10 @@ function Post({ postsData,user }) {
   const [viewdescription, setviewdescription] = useState(false);
   const [showBidForm, setShowBidForm] = useState(false);
   const [showIdeaForm, setShowIdeaForm] = useState(false);
-  let bidtrue=post.bid.some(bid => bid.user.toString() === user._id)
-  let ideatrue=post.bid.some(bid => bid.user.toString() === user._id)
+  let bidusertrue=post.bid.some(bid => bid.user.toString() === (user?user._id:null))
+  const [bidtrue, setbidtrue] = useState(bidusertrue );
+  let ideatruserue=post.bid.some(bid => bid.user.toString() === (user?user._id:null))
+  const [ideatrue, setideatrue] = useState(ideatruserue);
   const bidform = () => {
     setShowBidForm(true);
     setShowIdeaForm(false)
@@ -51,7 +53,7 @@ function Post({ postsData,user }) {
             <div className="flex justify-between items-center  ">
               <div className={" cursor-pointer " + styles.container }>
                 <div className={styles.btn} onClick={bidform}>
-                 {bidtrue?<a>BIDUpdate</a>:<a>BID</a>} 
+                 {bidtrue?<a>Update</a>:<a>BID</a>} 
 
                 </div>
                 <h1 className="text-white text-2xl font-bold py-2 px-5">  min: &#8377;{post.bidprice
@@ -69,7 +71,7 @@ function Post({ postsData,user }) {
             <h1
               className={
              
-                " mt-7 text-center font-bold text-4xl sm:text-5xl  text-white ml-12 "  + styles.heading2 
+                " mt-7 text-center backdrop-blur-3xl font-bold text-4xl sm:text-5xl  text-white ml-12 "  + styles.heading2 
               }
             >
              {post.projectName.toUpperCase()}
@@ -79,21 +81,20 @@ function Post({ postsData,user }) {
             <BidForm
              bidtrue={bidtrue}
               postId={post._id}
-              name={post.projectName}
-              img={post.img[0]}
               showBidForm={showBidForm}
               setShowBidForm={setShowBidForm}
-              setBid={setBids}
+              setBids={setBids}
+              setbidtrue={setbidtrue}
+              name={user?user.name:null}
             />
             <PersonForm
              idaetrue={ideatrue}
              postId={post._id}
-             name={post.projectName}
-             img={post.img[0]}
              showBidForm={showIdeaForm}
              setShowBidForm={setShowIdeaForm}
              setideas={setIdea}
-            
+             name={user?user.name:null}
+             setideatrue={setideatrue}
             />
           </div>
           <div
@@ -112,44 +113,17 @@ function Post({ postsData,user }) {
                   className={"h-24 w-24 m-2  rounded-full " + styles.userPic}
                   src="/random.jpg "
                 ></img>
-                <div className="font-bold text-2xl  text-gray-300">
+                <div className="font-bold backdrop-blur-xl text-2xl  text-gray-300">
                   Gaurav Bahuguna
                 </div>
               </div>
-              <div className="text-left  font-bold text-3xl font-sans text-white ml-5 mt-2">
+              <div className="text-left backdrop-blur-3xl px-8 py-2  font-bold text-3xl font-sans text-white ml-5 mt-2">
                <div> Description</div>
               </div>
-              <div className="blinking-cursor  mt-2 rounded-md  text-gray-300 font-500 text-xl font-sans border-white px-2 pt-2">
+              <div className="blinking-cursor backdrop-blur-3xl  mt-2 rounded-md  text-white font-medium font-500 text-xl font-sans border-white px-2 py-2">
                 {text1}{" "}
               </div>
-              <div className="  rounded-md  text-gray-300 font-500 text-xl font-sans border-white p-2">
-                {" "}
-                {!viewdescription ? (
-                  <span
-                    className=" text-gray-600 "
-                    onClick={viewmoredescription}
-                  >
-                    ...more
-                  </span>
-                ) : null}
-                {viewdescription ? (
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Laboriosam numquam, omnis esse fugit maiores sunt. Dolorum
-                    molestias at maiores quibusdam doloribus vitae vel officiis
-                    ducimus voluptatibus aliquid corrupti culpa magni, eaque
-                    soluta error vero cupiditate ratione molestiae aspernatur
-                    dolorem obcaecati nam atque. Iure, vitae? Molestias dolorum
-                    debitis ducimus nesciunt optio.
-                    <span
-                      className="m-4 text-gray-600 cursor-pointer"
-                      onClick={viewmoredescription}
-                    >
-                      less
-                    </span>
-                  </span>
-                ) : null}
-              </div>
+           
               <button
                 className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-3/1 mx-5 mr-2 mb-2"
                 type="button"
@@ -189,6 +163,13 @@ function Post({ postsData,user }) {
                  <td className="w-2/4 text-xl p-2 text-center font-serif text-green-600">
                   {bids.price}
                  </td>
+                {user&&(user.role === "root" || bids.user === user._id) && (
+               
+                <td className="w-2/4 text-xl p-2 text-center font-serif text-red-600">
+              <button onClick={() =>deletePost(post._id,setBids,user._id)}>delete</button>   
+               
+                 </td>
+                 )}
                </tr>
               ))} 
             

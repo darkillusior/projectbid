@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 
-
 const { createServer } = require("http");
 
 const httpServer = createServer(app);
@@ -21,9 +20,6 @@ app.use(express.json());
 
 
 
-
-
-app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 

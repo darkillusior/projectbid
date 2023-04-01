@@ -4,10 +4,9 @@
 /* background: #00002f; */
   
  
-    /* background: linear-gradient(160deg, rgb(177, 80, 247) 5%, rgb(93, 127, 238) 50%, rgb(189, 72, 255) 83%); */
-    background-image: url(/northern-lights-g3da660618_1920.jpg);
-    background-size: cover;
-    min-width: 50%;
+    background-image: url(/solaris-g2c86881ba_1280.jpg);
+    
+    min-width: 100%;
     background-attachment: fixed;
     overflow: hidden;
     background-repeat: no-repeat;
@@ -56,50 +55,52 @@
     
     }
 
-.bgbox{
-    display: flex;
-    align-items: center;
-
-}
-
-
-
-.userPic {
-    position: relative;
-    z-index: 1;
-}
-.label{
+    .bgbox{
+        display: flex;
+        align-items: center;
+    
+    }
+    
+    
+    
+    .userPic {
+        position: relative;
+        z-index: 1;
+    }
+    .label{
+        color: aliceblue;
+        
+     /* color: rgb(30, 255, 0);
+    animation:glow 2500ms linear infinite 2000ms;    */
+    }
+    .form{
+    font-family: 'Orbitron',
+    sans-serif;
     color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    }
     
- /* color: rgb(30, 255, 0);
-animation:glow 2500ms linear infinite 2000ms;    */
-}
-.form{
-font-family: 'Orbitron',
-sans-serif;
-color: aliceblue;
-display: flex;
-flex-direction: column;
-align-items: start;
-justify-content: center;
-}
+    .form2{
+    margin: auto;
+    font-family: 'Orbitron',
+    sans-serif;
+    color: aliceblue;
+    background: rgba(107, 107, 184, 0.3);
+    transition: height 2s;
+    
+    }
+    .input{
+        
+        background: rgba(239, 239, 239, 0.2);
+        border-radius: 3px;
+        color: #FFFFFF;
+        
+    }
 
-.form2{
-margin: auto;
-font-family: 'Orbitron',
-sans-serif;
-color: aliceblue;
-background: rgba(107, 107, 184, 0.3);
-transition: height 2s;
 
-}
-.input{
-    
-    background: rgba(239, 239, 239, 0.2);
-    border-radius: 3px;
-    color: #FFFFFF;
-    
-}
 .addButton{
     margin-top: 45px;
     margin-left: 5%;

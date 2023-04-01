@@ -22,23 +22,37 @@ export const submitNewPost = async (
 };
 
 
-export const deletePost = async (postId, setPosts, setShowToastr) => {
+export const deletePost = async (postId,setBids,setMybids,userId) => {
   try {
-    await Axios.delete(`/${postId}`);
-    setPosts(prev => prev.filter(post => post._id !== postId));
-    setShowToastr(true);
+    await Axios.delete(`/post/biddelete/${postId}`);
+   
+    setBids(prev => prev.filter(bid => bid.user.toString() !== userId));
+
+  
+  } catch (error) {
+    alert(catchErrors(error));
+  }
+};
+export const deletePost2 = async (postId,setMybids) => {
+  try {
+    await Axios.delete(`/post/biddelete/${postId}`);
+   
+
+
+    setMybids(prev => prev.filter(mybid => mybid.postId.toString() !== postId));
   } catch (error) {
     alert(catchErrors(error));
   }
 };
 
-export const bidPost = async (postId,data,setBids) => {
+export const bidPost = async (postId,data,setBids, setbidtrue) => {
   try {
  
      
       await Axios.post(`post/bid/${postId}`,{data});
      
       setBids(prev => [data, ...prev]);
+      setbidtrue(true)
     //
    
   } catch (error) {
@@ -66,7 +80,7 @@ export const ideaPost = async (postId,data,setBids) => {
  
       
       await Axios.post(`post/idea/${postId}`,{data});
-     
+      setideatrue(true)
     
     //
    
@@ -81,7 +95,7 @@ export const updateideaPost = async (postId,data,setBids) => {
       await Axios.post(`post/updateidea/${postId}`,{
         data
       });
-
+      setideatrue(true)
     
     //
    

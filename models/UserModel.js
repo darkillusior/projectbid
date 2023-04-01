@@ -12,10 +12,12 @@ const UserSchema = new Schema(
     name: { type: String, required: true },
   
     category:{type:String,default:"User"},
-
-    points:{   type:Number, default:0 },
+ 
+     master:{type:String},
+   
     userimg:{type: String},
-   mybid:[{
+   
+      mybid:[{
    postId: { type: Schema.Types.ObjectId},
    projectName:{type:String},
    img:{type:String},
@@ -30,8 +32,8 @@ const UserSchema = new Schema(
     price:{type:Number},
     contact:{type:Number}
  
-    }]
-  
+    }],
+    role: { type: String, default: "user", enum: ["user", "root"] },
   },
   { timestamps: true }
 );

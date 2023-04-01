@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { bidPost,updateBidPost } from "../utils/postActions";
-function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
+function BidForm({ showBidForm, setShowBidForm,postId,setBids,bidtrue,setbidtrue,name}) {
   const [data, setData] = useState({
     price: null,
     contact: null,
-  
+    name:name
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,9 +17,9 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
     e.preventDefault();
   
     if(bidtrue){
-      updateBidPost(postId,data,setBid)
+      updateBidPost(postId,data,setBids)
     }else{
-      bidPost(postId,data,setBid);
+      bidPost(postId,data,setBids,setbidtrue);
     }
   };
   return (
@@ -28,9 +28,7 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
         <>
           <form
             onSubmit={handleSubmit}
-            className={
-              styles.form2 +
-              " sm:w-1/2 p-3 h-fit flex flex-col shadow-2xl justify-center  shadow-black rounded-md bg-white  z-50"
+            className={ " sm:w-1/2 p-3 h-fit flex flex-col shadow-2xl justify-center  shadow-black rounded-md bg-white  z-50 "+ styles.form2 
             }
           >
             <div className="m-2 flex justify-center">
@@ -40,10 +38,10 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
               </h1>
             </div>{" "}
             <div className="m-2 flex justify-center">
-              <label className={styles.label + " m-2"}>Enter Phone No</label>
+              <label className={ " m-2 " + styles.label}>Enter Phone No</label>
               <input
                 className={
-                  styles.input + " text-slate-800 w-11/12 font-bold m-2 p-2"
+                " text-slate-800 w-11/12 font-bold m-2 p-2 "+  styles.input 
                 }
                 type="tel"
                 name="contact"
@@ -52,11 +50,9 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBid,bidtrue}) {
               ></input>
             </div>
             <div className="m-2 flex justify-center">
-              <label className={styles.label + " m-2"}>Enter BID Amount</label>
+              <label className={ " m-2 " + styles.label }>Enter BID Amount</label>
               <input
-                className={
-                  styles.input + " text-slate-800 w-11/12 font-bold m-2 p-2"
-                }
+                className={ " text-slate-800 w-11/12 font-bold m-2 p-2 " + styles.input   }
                 name="price"
                 value={data.price}
                 onChange={handleChange}
