@@ -56,27 +56,27 @@ router.get("/:postId",async (req, res) => {
   router.post("/", authMiddleware, async (req, res) => {
     const { userId } = req;
     const data = req.body;
- 
+ console.log(data)
     try {
       const newPost = {
         user: userId,
- 
+        
+       name:data.data.name,
+
+       userimg:data.data.userimg,
+
         img:data.data.pic,
      
        projectName:data.data.projectname,
      
        tech:data.data.tech,
-     
-       
-     
-       video:data.data.video,
-     
-       discription:data.data. description,
+
+       discription:data.data.description,
      
        bid: [],
        
        bidprice:data.data.bidprice,
-       ideaprice:data.data.ideaprice,
+  
       };
       
   
@@ -198,7 +198,7 @@ router.post("/idea/:postId", authMiddleware, async (req, res) => {
     if (!post) {
       return res.status(404).send("No Post found");
     }
-   
+       const user= await UserModel.findById(userId)
 
 
     const isBid = post.idea.some(bid => bid.user.toString() === userId);
@@ -206,11 +206,11 @@ router.post("/idea/:postId", authMiddleware, async (req, res) => {
       return res.status(401).send(" already there ");
     }
 
-    post.idea.unshift({ user: userId,youridea:youridea,contact:contact,price:price});
+    post.idea.unshift({ user: userId,youridea:youridea,contact:contact,price:price,name:user.name});
                           
     await post.save();
     
-    const user= await UserModel.findById(userId)
+
     const newpost={
      postId:postId,
      projectName:post.projectName,
@@ -218,7 +218,7 @@ router.post("/idea/:postId", authMiddleware, async (req, res) => {
      price:price,
      contact:contact
     }
-    user.idea.push(newpost)
+    user.myidea.push(newpost)
     await  user.save()
 
     return res.status(200).send("Posted");
@@ -351,7 +351,16 @@ router.delete("/ideadelete/:postId", authMiddleware, async (req, res) => {
       await post.save();
       return res.status(200).send("Deleted Successfully");
     };
+    const user = await UserModel.findById(userId);
 
+
+ 
+    const  mybidindex = user.myidea.findIndex(bid =>bid.postId.toString() === postId);
+    if (index === -1) {
+     return res.status(404).send("No bid found");
+   }       
+    user.myidea.splice(mybidindex,1)
+    await user.save();
     if (bid.user.toString() !== userId) {
       const user = await UserModel.findById(userId);
       if (user.role === "root") {

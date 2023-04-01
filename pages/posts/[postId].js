@@ -7,9 +7,11 @@ import BidForm from "../../components/BidForm";
 import axios from "axios";
 import baseUrl from "../../utils/baseUrl";
 import PersonForm from "../../components/PersonalizeForm";
+import Modal from "@/components/FullScreenModel";
 function Post({ postsData,user }) {
 
   const [post, setPost] = useState( postsData||[]);
+console.log(post)
   const [bid, setBids] = useState( post.bid||[]);
   const [idea, setIdea] = useState( post.idea||[]);
   const [viewdescription, setviewdescription] = useState(false);
@@ -17,7 +19,7 @@ function Post({ postsData,user }) {
   const [showIdeaForm, setShowIdeaForm] = useState(false);
   let bidusertrue=post.bid.some(bid => bid.user.toString() === (user?user._id:null))
   const [bidtrue, setbidtrue] = useState(bidusertrue );
-  let ideatruserue=post.bid.some(bid => bid.user.toString() === (user?user._id:null))
+  let ideatruserue=post.idea.some(bid => bid.user.toString() === (user?user._id:null))
   const [ideatrue, setideatrue] = useState(ideatruserue);
   const bidform = () => {
     setShowBidForm(true);
@@ -47,13 +49,14 @@ function Post({ postsData,user }) {
   return (
     <>
       <main className={styles.bg}>
-        <Navbar />
+    
+        <Navbar user={user} />
         <div className={" h-auto mx-5 mt-20 flex flex-col"}>
           <div className="flex flex-col  justify-between ">
             <div className="flex justify-between items-center  ">
               <div className={" cursor-pointer " + styles.container }>
                 <div className={styles.btn} onClick={bidform}>
-                 {bidtrue?<a>Update</a>:<a>BID</a>} 
+                 {bidtrue?<a>UpdateBid</a>:<a>BID</a>} 
 
                 </div>
                 <h1 className="text-white text-2xl font-bold py-2 px-5">  min: &#8377;{post.bidprice
@@ -65,7 +68,7 @@ function Post({ postsData,user }) {
                 type="button"
                 onClick={ideaform}
               >
-                Personalization
+              {ideatrue?<a>UpdateIdea</a>:<a>Idea</a>} 
               </button>
             </div>
             <h1
@@ -79,7 +82,7 @@ function Post({ postsData,user }) {
           </div>
           <div className="mt-10">
             <BidForm
-             bidtrue={bidtrue}
+              bidtrue={bidtrue}
               postId={post._id}
               showBidForm={showBidForm}
               setShowBidForm={setShowBidForm}
@@ -88,7 +91,7 @@ function Post({ postsData,user }) {
               name={user?user.name:null}
             />
             <PersonForm
-             idaetrue={ideatrue}
+             ideatrue={ideatrue}
              postId={post._id}
              showBidForm={showIdeaForm}
              setShowBidForm={setShowIdeaForm}
@@ -99,7 +102,7 @@ function Post({ postsData,user }) {
           </div>
           <div
             className={
-              "rounded-md flex flex-wrap bg-white bg-opacity-10 mt-10 border-collapse relative z-10  " +
+              "rounded-md flex flex-wrap backdrop-blur-sm bg-white bg-opacity-10 mt-10 border-collapse relative z-10  " +
               styles.bgbox
             }
           >
@@ -111,10 +114,10 @@ function Post({ postsData,user }) {
               <div className="m-2 flex items-center  ">
                 <img
                   className={"h-24 w-24 m-2  rounded-full " + styles.userPic}
-                  src="/random.jpg "
+                  src={post.userimg}
                 ></img>
                 <div className="font-bold backdrop-blur-xl text-2xl  text-gray-300">
-                  Gaurav Bahuguna
+                {post.name}
                 </div>
               </div>
               <div className="text-left backdrop-blur-3xl px-8 py-2  font-bold text-3xl font-sans text-white ml-5 mt-2">
@@ -134,18 +137,18 @@ function Post({ postsData,user }) {
           </div>
           <br />
           {/* <hr /> */}
-
+          {user&&(user.role === "root" || post.user === user._id) && (  <Modal  idea={idea}/>)}
           <div className="rounded-md mt-2 ">
-            <div className="text-center font-bold text-3xl font-sans text-white ml-12 mt-2">
+            <div className="text-center backdrop-blur-3xl font-bold text-3xl font-sans text-white  mt-2">
               Bid List
             </div>
             <table className="w-[80%] m-auto mb-10">
               <thead>
                 <tr className="">
-                  <td className="w-2/4 text-xl p-2 text-center font-mono text-white">
+                  <td className="w-2/4 text-xl p-2  text-center font-mono text-white">
                     Name
                   </td>
-                  <td className="w-2/4 text-xl text-center p-2 font-mono text-white">
+                  <td className="w-2/4 text-xl  text-center p-2 font-mono text-white">
                     Bid Amount
                   </td>
                 </tr>

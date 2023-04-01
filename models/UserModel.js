@@ -7,22 +7,21 @@ const UserSchema = new Schema(
   
     email: { type: String, required: true, unique: true },
 
-    password: { type: String, required: true, select: false },
 
     name: { type: String, required: true },
   
     category:{type:String,default:"User"},
  
-     master:{type:String},
+    master:{type:String},
    
     userimg:{type: String},
    
       mybid:[{
-   postId: { type: Schema.Types.ObjectId},
-   projectName:{type:String},
-   img:{type:String},
-   price:{type:Number},
-   contact:{type:Number}
+     postId: { type: Schema.Types.ObjectId},
+     projectName:{type:String},
+     img:{type:String},
+     price:{type:Number},
+      contact:{type:Number}
 
    }],
    myidea:[{

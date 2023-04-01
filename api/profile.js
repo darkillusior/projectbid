@@ -17,29 +17,20 @@ router.get("/",authMiddleware, async (req, res) => {
     return res.status(500).send("Server Error");
   }
 });
-router.post(`/postsedit`, authMiddleware, async (req, res) => {
-  try {
-    const { userId} = req;
-      const {price}=req.body
-    
-    return res.json(posts);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send("Server Error");
-  }
-});
+
 
 // UPDATE PROFILE
 router.post("/update", authMiddleware, async (req, res) => {
   try {
     const { userId } = req;
      
-
-    if (profilePicUrl) {
+ const {picUrl,info}=req.body
+   
       const user = await UserModel.findById(userId);
-      user.profilePicUrl = profilePicUrl;
+      user.userimg = picUrl;
+      user.master=info;
       await user.save();
-    }
+
 
     return res.status(200).send("Success");
   } catch (error) {

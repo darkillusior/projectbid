@@ -1,9 +1,24 @@
 import React, { useRef, useEffect, useState } from "react";
-import FullScreenModel from "../components/FullScreenModel"
+import { GoogleLogin } from '@react-oauth/google';
+
+import { loginUser,logoutUser } from "../utils/authUser";
+import Link from "next/link";
 
 
-function Navbar() {
+function Navbar({user}) {
   const [showCollapse, setShowCollapse] = useState(false);
+  
+console.log(user)
+
+  const handelSubmit=async (credentialResponse)=>{
+
+    let user={
+    client_id:credentialResponse.clientId,
+    jwtToken:credentialResponse.credential}
+
+    await loginUser(user);
+  }
+
   let mobile = false;
   const [hover, setHover] = useState("1");
   const [hover2, setHover2] = useState("2");
@@ -42,7 +57,7 @@ function Navbar() {
   }, []);
 
   return (
-    <>
+    
       <div
         className={`fixed top-0 z-50 backdrop-blur-lg flex justify-between bg-gradient-radial  from-transparent ${hidden}    w-full h-14 items-center  `}
       >
@@ -99,28 +114,13 @@ function Navbar() {
               hover2 != "2" && "blur-[2px]"
             }   hover:bg-gradient-radial from-transparent to-cyan-400   py-1 font-bold transition ease-in delay-200 ${hidden}`}
           >
-            <a className={`font-bold  `} href="/my-profile">
+            <Link href="/my-profile">
+            <a1 className={`font-bold  `} href="/my-profile">
               Profile
-            </a>
+            </a1>
+            </Link>
           </div>
-          <div
-            onMouseEnter={() => {
-              setHover3("3");
-              setHover4("3");
-              setHover2("3");
-              setHover("3");
-            }}
-            onMouseLeave={() => {
-              setHover("1");
-              setHover2("2");
-              setHover4("4");
-            }}
-            className={`px-6 z-40  ${
-              hover3 != "3" && "blur-[2px]"
-            }  hover:bg-gradient-radial from-transparent py-1 to-cyan-400    font-bold transition ease-in delay-300 ${hidden}`}
-          >
-            Signup
-          </div>
+       
           <div
             onMouseEnter={() => {
               setHover("4");
@@ -134,19 +134,29 @@ function Navbar() {
             }}
             className={`px-6  z-40  ${
               hover4 != "4" && "blur-[2px]"
-            }   hover:bg-gradient-radial  py-1 from-transparent to-cyan-400   font-bold transition ease-in delay-500 ${hidden}`}
+            }   hover:bg-gradient-radial  py-1 from-transparent to-cyan-400   font-bold transition ease-in delay-300 ${hidden}`}
           >
-            Login
+       {!user?<GoogleLogin
+  onSuccess={credentialResponse => {
+    handelSubmit(credentialResponse)
+  }} useOneTap
+  type="icon"
+  shape="circle"
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/>: <button
+              onClick={() => logoutUser(user.email)}
+                className=" font-bold "
+              >
+                Logout
+              </button>}   
           </div>
-          <div
-            className={`px-6  z-40   from-transparent to-cyan-400   font-bold transition ease-in delay-500 ${hidden}`}
-          >
-            <FullScreenModel />
-          </div>
+        
     
         </div>
       </div>
-    </>
+
   );
 }
 

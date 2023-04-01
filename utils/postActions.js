@@ -59,7 +59,7 @@ export const bidPost = async (postId,data,setBids, setbidtrue) => {
     alert(catchErrors(error));
   }
 };
-export const updateBidPost = async (postId, data,setBids) => {
+export const updateBidPost = async (postId, data,setBids,) => {
   try {
  
       
@@ -75,7 +75,7 @@ export const updateBidPost = async (postId, data,setBids) => {
   }
 };
 
-export const ideaPost = async (postId,data,setBids) => {
+export const ideaPost = async (postId,data, setideatrue) => {
   try {
  
       
@@ -88,7 +88,7 @@ export const ideaPost = async (postId,data,setBids) => {
     alert(catchErrors(error));
   }
 };
-export const updateideaPost = async (postId,data,setBids) => {
+export const updateideaPost = async (postId,data, setideatrue) => {
   try {
  
       

@@ -11,7 +11,7 @@ import Navbar from '../components/Navbar'
 import Link from "next/link";
 
 
-function Projects({postsData}) {
+function Projects({postsData,user}) {
     if (typeof document === 'undefined') {
         React.useLayoutEffect = React.useEffect;
       }   
@@ -30,7 +30,7 @@ function Projects({postsData}) {
   return (
     <div>
 
-<Navbar/>
+<Navbar user={user}/>
 <div  className={styles.bgI}>
    {/* <div  className='    pt-28  pb-14  gap-8 flex  flex-col  items-center'>
     <Filter options={options} onFilter={handleFilter}  /> */}

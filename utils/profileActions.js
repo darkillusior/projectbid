@@ -11,45 +11,18 @@ export const Axios = axios.create({
 
 
 
-export const profileUpdate = async (profile, setLoading, setError, profilePicUrl) => {
+export const profileUpdate = async (picUrl,info) => {
   try {
-    const { bio, facebook, youtube, twitter, instagram } = profile;
+
 
     await Axios.post(`/update`, {
-      bio,
-      facebook,
-      youtube,
-      twitter,
-      instagram,
-      profilePicUrl
+      picUrl,info
     });
 
-    setLoading(false);
+    
     window.location.reload();
   } catch (error) {
     setError(catchErrors(error));
     setLoading(false);
-  }
-};
-
-export const passwordUpdate = async (setSuccess, userPasswords) => {
-  const { currentPassword, newPassword } = userPasswords;
-  try {
-    await Axios.post(`/settings/password`, { currentPassword, newPassword });
-
-    setSuccess(true);
-  } catch (error) {
-    alert(catchErrors(error));
-  }
-};
-
-export const toggleMessagePopup = async (setPopupSetting, setSuccess) => {
-  try {
-    await Axios.post(`/settings/messagePopup`);
-
-    setPopupSetting(prev => !prev);
-    setSuccess(true);
-  } catch (error) {
-    alert(catchErrors(error));
   }
 };

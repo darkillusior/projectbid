@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import Link from "next/link";
 import Home from "../components/Home";
 
-function Index() {
+function Index({user}) {
   if (typeof document === 'undefined') {
     React.useLayoutEffect = React.useEffect;
   }   
@@ -15,7 +15,7 @@ function Index() {
 
       
     <div>
-    <Navbar /> 
+    <Navbar user={user} /> 
 
  <div className=' bg-black flex w-full scroll-smooth' > 
 

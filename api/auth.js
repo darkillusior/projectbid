@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const UserModel = require("../models/UserModel");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const authMiddleware = require("../middleware/authMiddleware");
 
+const authMiddleware = require("../middleware/authMiddleware");
+const { OAuth2Client } = require('google-auth-library');
 router.get("/", authMiddleware, async (req, res) => {
   const { userId } = req;
 
@@ -22,27 +22,36 @@ router.get("/", authMiddleware, async (req, res) => {
   }
 });
 router.post("/", async (req, res) => {
-  const {email, password } = req.body.user;
-
-
-
-  if (password.length < 6) {
-    return res.status(401).send("Password must be atleast 6 characters");
-  }
+  const {client_id, jwtToken } = req.body.user;
 
   try {
-    const user = await UserModel.findOne({ email: email.toLowerCase() }).select(
-      "+password"
-    );
 
+   
+
+    const client = new OAuth2Client(client_id);
+    // Call the verifyIdToken to
+    // varify and decode it
+    const ticket = await client.verifyIdToken({
+        idToken: jwtToken,
+        audience: client_id,
+    });
+    // Get the JSON with all the user info
+    const data = ticket.getPayload();
+  
+console.log(data)
+ 
+  let user = await UserModel.findOne({ email: data.email })
     if (!user) {
-      return res.status(401).send("Invalid Credentials");
+      user = new UserModel({
+        name:data.name,
+        email: data.email,
+        userimg:data.picture
+
+      });
+ 
+      await user.save();
     }
 
-    const isPassword = await bcrypt.compare(password, user.password);
-    if (!isPassword) {
-      return res.status(401).send("Invalid Credentials");
-    }
 
     const payload = { userId: user._id };
     jwt.sign(payload, process.env.JwtSecret, { expiresIn: "2d" }, (err, token) => {

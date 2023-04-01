@@ -3,43 +3,41 @@ import React, { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Snowfall2 from 'react-snowfall'
 import uploadPic from '../utils/uploadPicToCloudinary';
-import uploadSingleVideo from '../utils/uplodesinglefile';
+
 import { submitNewPost } from "../utils/postActions";
 
-function AddProject() {
+function AddProject({user}) {
   if (typeof document === 'undefined') {
     React.useLayoutEffect = React.useEffect;
   }
   let picUrl=[]
     const[data,setFormvalues]=useState({
         projectname:"",
+        name:user.name,
+        userimg:user.userimg,
         description:"",
         tech:"",
         details:"",
         pic:[],
-        demovideo:"",
         bidprice:"",
-        ideaprice:""
+     
     })
-    const[video,setvideo]=useState()
+    
     const[pic,setPic]=useState([])
     const handlechange=(e)=>{
         const{name,value}=e.target
         setFormvalues(prev =>({...prev,[name]:value}))
         
     }
-    console.log(data)
-console.log(pic)
+
     const handleSubmit = async (e)=>{
        
-      e.preventDefault(data);
-let demovideo=null
+      e.preventDefault();
+
 
     picUrl = await uploadPic(pic);
-  if(video)
-  { demovideo = await  uploadSingleVideo(video)
-  }data.pic=picUrl
-  data.demovideo=demovideo
+     data.pic=picUrl
+
 await submitNewPost(data)
    }
 
@@ -71,13 +69,12 @@ await submitNewPost(data)
       
      <label className={styles.label +' text-xl '}>Screenshots:</label><input className={styles.input+" w-1/5 py-2 text-sm mt-3 ml-3"} type="file" name="pic" multiple   onChange={(e)=>{setPic(e.target.files)}} ></input>
 
-     <label className={styles.label +' text-xl ml-6'}>Demo Video</label><input className={styles.input+" w-1/5 py-2 text-sm mt-3 ml-3"} type="file" name="video"  onChange={(e)=>{setvideo(e.target.files[0])}}  ></input>
-     
+ 
      <br/>
      
      <label className={styles.label +' text-xl '}>Bid Price</label><input className={styles.input+"  text-sm ml-3 h-10 mt-3 p-2"} placeholder="DOLLAR" type="number"min="0.00" max="10000.0" step="0.1"    onChange={handlechange} value={data.bidprice} name="bidprice"></input>
 
-     <label className={styles.label +' text-xl ml-12 '}>Idea Price</label><input className={styles.input+"  text-sm ml-3 h-10 mt-3 p-2"} placeholder="DOLLAR" type="number"min="0.00" max="10000.0" step="0.1"   onChange={handlechange} value={data.ideaprice} name="ideaprice" ></input>
+
    
     <br/>
     
