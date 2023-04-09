@@ -198,13 +198,18 @@ router.post("/idea/:postId", authMiddleware, async (req, res) => {
     if (!post) {
       return res.status(404).send("No Post found");
     }
+<<<<<<< HEAD
        const user= await UserModel.findById(userId)
+=======
+    
+>>>>>>> 9e2c5b8 (new ui changes)
 
 
     const isBid = post.idea.some(bid => bid.user.toString() === userId);
     if (isBid) {
       return res.status(401).send(" already there ");
     }
+    const user= await UserModel.findById(userId)   
 
     post.idea.unshift({ user: userId,youridea:youridea,contact:contact,price:price,name:user.name});
                           
@@ -339,9 +344,9 @@ router.delete("/ideadelete/:postId", authMiddleware, async (req, res) => {
     const post = await BidModel.findById(postId);
     if (!post) return res.status(404).send("Post not found");
 
-    const index = post.idea.findIndex(bid =>bid.user === userId);
+    const index = post.idea.findIndex(bid =>bid.user.toString() === userId);
     if (index === -1) {
-      return res.status(404).send("No bid found");
+      return res.status(404).send("No idea found");
     }
     const bid = post.idea[index];
 
@@ -357,7 +362,11 @@ router.delete("/ideadelete/:postId", authMiddleware, async (req, res) => {
  
     const  mybidindex = user.myidea.findIndex(bid =>bid.postId.toString() === postId);
     if (index === -1) {
+<<<<<<< HEAD
      return res.status(404).send("No bid found");
+=======
+     return res.status(404).send("No myidea found");
+>>>>>>> 9e2c5b8 (new ui changes)
    }       
     user.myidea.splice(mybidindex,1)
     await user.save();

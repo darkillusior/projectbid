@@ -21,7 +21,7 @@ function Card({post}) {
         <div className=' w-full   overflow-hidden text-slate-200 text-base font-semibold break-all  break-words'>{post.tech.toLowerCase()}</div>
         </div>
         </div>
-        <div className="text-white bg-gradient-to-r mx-10 from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+        <div className="text-white bg-gradient-to-r mr-5 from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
           <button type="button">Live Preview</button>
         </div>
            

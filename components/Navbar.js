@@ -59,7 +59,7 @@ console.log(user)
   return (
     
       <div
-        className={`fixed top-0 z-50 backdrop-blur-lg flex justify-between bg-gradient-radial  from-transparent ${hidden}    w-full h-14 items-center  `}
+        className={`fixed top-0 z-50 hidden sm:flex backdrop-blur-lg justify-between bg-gradient-radial  from-transparent ${hidden}    w-full h-14 items-center  `}
       >
         <div
           className={`px-4 font-medium text-white   transition ease-in delay-100 ${hidden}`}
@@ -147,16 +147,71 @@ console.log(user)
   }}
 />: <button
               onClick={() => logoutUser(user.email)}
+<<<<<<< HEAD
                 className=" font-bold "
               >
                 Logout
+=======
+                className=" font-bold mt-1"
+              >
+                 <img src="/logoutL.svg" alt="logout" />
+>>>>>>> 9e2c5b8 (new ui changes)
               </button>}   
           </div>
         
     
         </div>
       </div>
+<<<<<<< HEAD
 
+=======
+      <div className={` sm:hidden fixed bottom-0  backdrop-blur  flex z-50  justify-between bg-black/20  from-transparent     w-full h-14 items-center  `}>
+        <div
+          className={`text-white relative  w-full flex items-center h-14 cursor-pointer justify-around`}
+        >
+          {/* <img className={`absolute -z-50 transition ease-in delay-500 bg-black w-full h-full ${hidden}`} src="/removebg.png" alt="" /> */}
+
+          <div
+            className={`px-6`}
+          >
+            <a  href="/">
+              <img src="/home.svg" alt="" />
+            </a>
+          </div>
+          <div
+            className={`px-6 z-40`}
+          >
+            <Link href="/my-profile">
+             <img src="/user.svg" alt="" />
+            </Link>
+          </div>
+       
+          <div
+            className={`px-6  z-40`}
+          >
+       {!user? 
+    <img 
+    onSuccess={credentialResponse => {
+          handelSubmit(credentialResponse)
+        }}
+        onError={() => {
+          console.log('Login Failed');
+        }} src="/google3.svg" alt="" />
+: <button
+              onClick={() => logoutUser(user.email)}
+                className=" font-bold "
+              >
+                <img src="/logout.svg" alt="logout-btn" />
+              </button>}   
+          </div>
+        
+    
+        </div>
+        
+      </div>
+
+</>
+>>>>>>> 9e2c5b8 (new ui changes)
   );
 }
 

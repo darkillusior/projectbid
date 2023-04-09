@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {deletePost2  } from "../utils/postActions";
+import {deletePost2,deletePost  } from "../utils/postActions";
 function Bidslist({bid,idea,setMybids,setMyidea}) {
     const [bids, setBids] = useState(bid ||idea||[]);
     let bidtrue=true
@@ -50,11 +50,14 @@ function Bidslist({bid,idea,setMybids,setMyidea}) {
         </td>
       
       
-       <td className="w-2/4 text-xl p-2 text-center font-serif text-red-600">
-     <button onClick={() =>deletePost2(bids.postId,setMybids)}>delete</button>   
+     {idea&&<td className="w-2/4 text-xl p-2 text-center font-serif text-red-600">
+     <button onClick={() =>deletePost2(bids.postId,setMyidea)}>delete</button>   
       
-        </td>
-       
+        </td>}  
+        {bid&&<td className="w-2/4 text-xl p-2 text-center font-serif text-red-600">
+     <button onClick={() =>deletePost(bids.postId,setMybids)}>delete</button>   
+      
+        </td>}
       </tr>
      ))} 
    

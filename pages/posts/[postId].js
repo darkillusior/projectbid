@@ -51,9 +51,13 @@ console.log(post)
       <main className={styles.bg}>
     
         <Navbar user={user} />
+<<<<<<< HEAD
         <div className={" h-auto mx-5 mt-20 flex flex-col"}>
+=======
+        <div className={" h-auto sm:mx-5 mt-10 sm:mt-20 flex flex-col"}>
+>>>>>>> 9e2c5b8 (new ui changes)
           <div className="flex flex-col  justify-between ">
-            <div className="flex justify-between items-center  ">
+            <div className="flex justify-between sm:items-center  ">
               <div className={" cursor-pointer " + styles.container }>
                 <div className={styles.btn} onClick={bidform}>
                  {bidtrue?<a>UpdateBid</a>:<a>BID</a>} 
@@ -64,7 +68,7 @@ console.log(post)
        </h1>  
               </div>
                  <button
-                className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-3/1 mx-5 mr-2 mb-2"
+                className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-3/1 mx-5 mr-2 mb-2 h-10"
                 type="button"
                 onClick={ideaform}
               >
@@ -74,7 +78,7 @@ console.log(post)
             <h1
               className={
              
-                " mt-7 text-center backdrop-blur-3xl font-bold text-4xl sm:text-5xl  text-white ml-12 "  + styles.heading2 
+                " mt-7 text-center backdrop-blur-3xl font-bold text-4xl sm:text-5xl  text-white  "  + styles.heading2 
               }
             >
              {post.projectName.toUpperCase()}
@@ -113,17 +117,24 @@ console.log(post)
             <div className="rounded-md flex flex-col items-start gap-5 border-t-0 sm:w-1/2 mt-10">
               <div className="m-2 flex items-center  ">
                 <img
+<<<<<<< HEAD
                   className={"h-24 w-24 m-2  rounded-full " + styles.userPic}
                   src={post.userimg}
                 ></img>
                 <div className="font-bold backdrop-blur-xl text-2xl  text-gray-300">
+=======
+                  className={"h-24 w-24 m-2  rounded-full object-cover" + styles.userPic}
+                  src={post.userimg}
+                ></img>
+                <div className="font-bold  text-2xl  text-gray-300">
+>>>>>>> 9e2c5b8 (new ui changes)
                 {post.name}
                 </div>
               </div>
-              <div className="text-left backdrop-blur-3xl px-8 py-2  font-bold text-3xl font-sans text-white ml-5 mt-2">
+              {/* <div className="text-left backdrop-blur-3xl px-8 py-2  font-bold text-3xl font-sans text-white ml-5 mt-2">
                <div> Description</div>
-              </div>
-              <div className="blinking-cursor backdrop-blur-3xl  mt-2 rounded-md  text-white font-medium font-500 text-xl font-sans border-white px-2 py-2">
+              </div> */}
+              <div className="blinking-cursor backdrop-blur-3xl w-full mt-2 pl-5 rounded-md  text-white font-medium font-500 text-xl font-sans border-white px-2 py-2">
                 {text1}{" "}
               </div>
            

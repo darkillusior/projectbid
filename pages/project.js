@@ -34,9 +34,9 @@ function Projects({postsData,user}) {
 <div  className={styles.bgI}>
    {/* <div  className='    pt-28  pb-14  gap-8 flex  flex-col  items-center'>
     <Filter options={options} onFilter={handleFilter}  /> */}
-    <div className="flex  my-16 flex-wrap justify-center items-center  gap-8">
+    <div className="flex mt-4 mb-16 sm:my-16 flex-wrap justify-center items-center  gap-8">
     {post.map((item,index)=>(    
-     <Link className="w-auto" href={`/posts/${item._id}`} >
+     <Link className="w-full sm:w-auto" href={`/posts/${item._id}`} >
   
         <Card  key={index}  post={item} />
     

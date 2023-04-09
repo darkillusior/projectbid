@@ -17,6 +17,9 @@ module.exports = {
         'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
      
       },
+      height: {
+        'dynamic-screen': '100dvh',
+      },
 
     },
   },

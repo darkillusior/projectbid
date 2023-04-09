@@ -6,7 +6,11 @@ import uploadPic from '../utils/uploadPicToCloudinary';
 
 import { submitNewPost } from "../utils/postActions";
 
+<<<<<<< HEAD
 function AddProject({user}) {
+=======
+function AddProject({user}){
+>>>>>>> 9e2c5b8 (new ui changes)
   if (typeof document === 'undefined') {
     React.useLayoutEffect = React.useEffect;
   }
@@ -48,12 +52,12 @@ await submitNewPost(data)
     
     <Snowfall2 style={{ filter: 'blur(1px)' }} snowflakeCount={50} speed={[0.0, 0.1]} wind={[0.0, 0.1]} />
 
-   <div className={styles.form +" text-6xl m-2 ml-4 relative px-5 overflow-hidden z-20"}>
+   <div className={" text-6xl m-2 ml-4 relative px-5 overflow-hidden z-20 "+styles.form }>
     Add Project</div>
     <br/>
     <form onSubmit={handleSubmit} className={styles.form +" text-6xl m-4 mt-10 relative  overflow-hidden z-20"}>
     <div className="flex items-center justify-start">
-    <label className={styles.label +' text-xl '}>Project Name</label>
+    <label className={' text-xl '+styles.label}>Project Name</label>
     <input type="text" className={styles.input+' text-lg font-sans mt-4  ml-8 rounded-md p-2'} onChange={handlechange} value={data.projectname} name="projectname"></input> 
   
     </div>
