@@ -12,6 +12,7 @@ import Link from "next/link";
 
 
 function Projects({postsData,user}) {
+  console.log(postsData)
     if (typeof document === 'undefined') {
         React.useLayoutEffect = React.useEffect;
       }   

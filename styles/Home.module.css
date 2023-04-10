@@ -3,30 +3,6 @@
 
   background-image: url(/solaris-g2c86881ba_1280.jpg);
   background-size: cover;
-
-<<<<<<< HEAD
-.bg{
-/* background: #00002f; */
-  
- 
-    background-image: url(/solaris-g2c86881ba_1280.jpg);
-    background-size: cover;
-    
-    min-width: 100%;
-    background-attachment: fixed;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    position: relative;
-   
-    z-index: 0;
-=======
-  min-width: 100%;
-  background-attachment: fixed;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  position: relative;
->>>>>>> 9e2c5b8 (new ui changes)
-
   z-index: 0;
   height: 100%;
   padding-bottom: 3rem;

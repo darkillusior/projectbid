@@ -6,11 +6,8 @@ import uploadPic from '../utils/uploadPicToCloudinary';
 
 import { submitNewPost } from "../utils/postActions";
 
-<<<<<<< HEAD
+
 function AddProject({user}) {
-=======
-function AddProject({user}){
->>>>>>> 9e2c5b8 (new ui changes)
   if (typeof document === 'undefined') {
     React.useLayoutEffect = React.useEffect;
   }

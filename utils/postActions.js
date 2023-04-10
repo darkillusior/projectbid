@@ -35,11 +35,11 @@ export const deletePost = async (postId,setBids,setMybids,userId) => {
 };
 export const deletePost2 = async (postId,setMybids) => {
   try {
-    await Axios.delete(`/post/ideadelete/${postId}`);
+    await Axios.delete(`/post/biddelete/${postId}`);
    
 
 
-    setMyidea(prev => prev.filter(mybid => mybid.postId.toString() !== postId));
+    setMybids(prev => prev.filter(mybid => mybid.postId.toString() !== postId));
   } catch (error) {
     alert(catchErrors(error));
   }
@@ -103,7 +103,4 @@ export const updateideaPost = async (postId,data, setideatrue) => {
     alert(catchErrors(error));
   }
 };
-
-
-
 

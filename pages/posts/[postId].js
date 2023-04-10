@@ -51,11 +51,7 @@ console.log(post)
       <main className={styles.bg}>
     
         <Navbar user={user} />
-<<<<<<< HEAD
-        <div className={" h-auto mx-5 mt-20 flex flex-col"}>
-=======
         <div className={" h-auto sm:mx-5 mt-10 sm:mt-20 flex flex-col"}>
->>>>>>> 9e2c5b8 (new ui changes)
           <div className="flex flex-col  justify-between ">
             <div className="flex justify-between sm:items-center  ">
               <div className={" cursor-pointer " + styles.container }>
@@ -117,17 +113,10 @@ console.log(post)
             <div className="rounded-md flex flex-col items-start gap-5 border-t-0 sm:w-1/2 mt-10">
               <div className="m-2 flex items-center  ">
                 <img
-<<<<<<< HEAD
-                  className={"h-24 w-24 m-2  rounded-full " + styles.userPic}
-                  src={post.userimg}
-                ></img>
-                <div className="font-bold backdrop-blur-xl text-2xl  text-gray-300">
-=======
                   className={"h-24 w-24 m-2  rounded-full object-cover" + styles.userPic}
                   src={post.userimg}
                 ></img>
                 <div className="font-bold  text-2xl  text-gray-300">
->>>>>>> 9e2c5b8 (new ui changes)
                 {post.name}
                 </div>
               </div>
