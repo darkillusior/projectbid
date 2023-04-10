@@ -35,7 +35,7 @@ export const deletePost = async (postId,setBids,setMybids,userId) => {
 };
 export const deletePost2 = async (postId,setMybids) => {
   try {
-    await Axios.delete(`/post/biddelete/${postId}`);
+    await Axios.delete(`/post/ideadelete/${postId}`);
    
 
 
