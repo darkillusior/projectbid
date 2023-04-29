@@ -24,7 +24,7 @@ router.get("/:searchText/:userId", authMiddleware, async (req, res) => {
     );
   
 //     const name =  results.product.filter(like => like.name.toString() === searchText);
-// console.log("result",name)
+// 
     return res.status(200).json(results.product);
   } catch (error) {
     console.error(error);

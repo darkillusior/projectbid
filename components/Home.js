@@ -9,8 +9,8 @@ function Home() {
      {/* <div className="sm:hidden w-full">
      <img src="/logo.png" className="h-16" alt="ProjectBidder Logo" />
         </div> */}
-       <h1>Find your Dream Project</h1>
-       <p>explore for best responsive web project to grow your business!</p>
+       <h1>Find your Desire Project</h1>
+       <p> Buy and Sell High-Quality Project Ideas and Source Code!</p>
       <Link href="/project"> <button>Explore</button></Link>
      </div>
      {/* <div className="column2">

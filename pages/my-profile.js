@@ -10,7 +10,7 @@ import Modal2 from "@/components/Modal2";
 function Profile  ({user,postsData}) {
 
   const [post, setPost] = useState( postsData||[]);
-  console.log(post)
+  
   const [Mybid, setshowMybid] = useState( false);
   const [Myidea, setshowMyidea] = useState(false);
   const [MyPost, setshowMyPost] = useState( false);

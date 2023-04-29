@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Card({post}) {
-  console.log(post)
+  
   return (
   <>
   <div className={'gradient-z hover:translate-y-1  sm:w-96   mx-2 my-1  text-black rounded-md hover:cursor-pointer  hover:bg-opacity-60  shadow-md    card'} >

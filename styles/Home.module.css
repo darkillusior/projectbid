@@ -60,18 +60,16 @@
   z-index: 1;
   object-fit: cover;
 }
+
 .label {
   color: aliceblue;
-
-  /* color: rgb(30, 255, 0);
-    animation:glow 2500ms linear infinite 2000ms;    */
 }
 .form {
   font-family: "Orbitron", sans-serif;
   color: aliceblue;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
 }
 

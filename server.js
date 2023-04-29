@@ -40,6 +40,6 @@ nextApp.prepare().then(() => {
   httpServer.listen(PORT, err => {
     
     if (err) throw err;
-    console.log(`Express server  running ${PORT}`);
+    
   });
 });

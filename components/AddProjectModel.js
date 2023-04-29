@@ -1,23 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import axios from "axios";
-import baseUrl from "../utils/baseUrl";
-
-import styles from "../styles/Home.module.css";
-
-import Card from "../components/Card";
-import uploadPic from "@/utils/uploadPicToCloudinary";
+import React, {useState} from "react";
 import { submitNewPost } from "@/utils/postActions";
-import Navbar from "../components/Navbar";
-import Link from "next/link";
-import AddProjectModel from "../components/AddProjectModel"
-
-function Projects({ postsData, user }) {
-  if (typeof document === "undefined") {
-    React.useLayoutEffect = React.useEffect;
-  }
-  const [post, setPost] = useState(postsData || []);
-
+import uploadPic from "@/utils/uploadPicToCloudinary";
+export default function Modal({user}) {
   
+  const [showModal, setShowModal] = React.useState(false);
+    
   let picUrl=[]
     const[data,setFormvalues]=useState({
         projectname:"",
@@ -53,14 +40,21 @@ function Projects({ postsData, user }) {
 
 await submitNewPost(data)
    }
-
   return (
-    <div>
-      <Navbar user={user} />
-      <div className={styles.bgI}>
-        {/* <div  className='    pt-28  pb-14  gap-8 flex  flex-col  items-center'>
-    <Filter options={options} onFilter={handleFilter}  /> */}
-        <form onSubmit={handleSubmit} className="create-post">
+    <>
+      <button
+        className="outline-none focus:outline-none ease-linear transition-all duration-150"
+        type="button"
+        onClick={() => setShowModal(true)}
+      >
+        <svg width="50" height="50" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="50" rx="25" fill="#2D75EF"/><path d="M32.5 25.938h-15a.944.944 0 0 1-.938-.938c0-.512.425-.938.938-.938h15c.513 0 .938.425.938.938a.944.944 0 0 1-.938.938Z" fill="#fff"/><path d="M25 33.438a.944.944 0 0 1-.938-.938v-15c0-.512.425-.938.938-.938.512 0 .938.425.938.938v15a.944.944 0 0 1-.938.938Z" fill="#fff"/></svg>
+      </button>
+      {showModal ? (
+        <>
+        <div
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto top-0 fixed bg-white/20 w-full inset-0 z-50 outline-none focus:outline-none"
+          >
+           <form onSubmit={handleSubmit} className="create-post1">
           <div className="flex items-center justify-center w-full text-slate-200 text-2xl font-bold font-sans">
             <span>Add Project</span>
           </div>
@@ -79,33 +73,18 @@ await submitNewPost(data)
           <div className="w-full">
             <textarea required onChange={handlechange} value={data.description} name="description" className="bg-transparent/40 text-white outline-none py-1 px-2 rounded w-full" placeholder="Add details" rows="5"></textarea>
           </div>
-          <div className="text-white bg-gradient-to-r mr-5 from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-20">
+         <div className="flex">
+         <div className="text-white bg-gradient-to-r mr-5 from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-20">
           <button type="submit">add</button>
         </div>
-        </form>
-        <div className="flex mt-4 mb-16 sm:my-16 flex-wrap justify-center items-center  gap-4">
-          {post.map((item, index) => (
-            <Link className="w-full sm:w-auto" key={index} href={`/posts/${item._id}`}>
-              <Card key={index} post={item} />
-            </Link>
-          ))}
+          <div onClick={()=> setShowModal(false)} className="text-white bg-gradient-to-r mr-5 from-red-400 via-red-500 to-red-300 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-20">
+          <button type="submit">cancel</button>
         </div>
-      </div>
-      <div className="add-project-handler">
-        <AddProjectModel />
-      </div>
-    </div>
+         </div>
+        </form>
+        </div>
+        </>
+      ) : null}
+    </>
   );
 }
-
-export default Projects;
-
-export const getServerSideProps = async (ctx) => {
-  try {
-    const res = await axios.get(`${baseUrl}/api/post`, {});
-
-    return { props: { postsData: res.data } };
-  } catch (error) {
-    return { props: { errorLoading: true } };
-  }
-};

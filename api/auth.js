@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
     // Get the JSON with all the user info
     const data = ticket.getPayload();
   
-console.log(data)
+
  
   let user = await UserModel.findOne({ email: data.email })
     if (!user) {

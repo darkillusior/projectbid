@@ -6,8 +6,12 @@ import Link from "next/link";
 
 function Navbar({ user }) {
   const [showCollapse, setShowCollapse] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  console.log(user);
+  const handleDropdownClick = () => {
+    setIsOpen(!isOpen);
+  };
+  
 
   const handelSubmit = async (credentialResponse) => {
     let user = {
@@ -17,15 +21,9 @@ function Navbar({ user }) {
 
     await loginUser(user);
   };
-
-  let mobile = false;
-  const [hover, setHover] = useState("1");
-  const [hover2, setHover2] = useState("2");
-  const [hover3, setHover3] = useState("3");
-  const [hover4, setHover4] = useState("4");
   const [hidden, sethidden] = useState("");
   const [hidden2, sethidden2] = useState(false);
-  console.log("gg", hover);
+  
   useEffect(() => {
     let postend = 0;
     let position = document.getElementById("position");
@@ -41,7 +39,7 @@ function Navbar({ user }) {
 
       if (poststart > postend) {
         sethidden("-translate-y-[150%] scale-x-50 ");
-        sethidden2(true);
+        sethidden2(false);
       } else {
         sethidden("");
         sethidden2(false);
@@ -75,68 +73,7 @@ function Navbar({ user }) {
           className={`text-white relative  w-auto flex items-center h-14 cursor-pointer `}
         >
           {/* <img className={`absolute -z-50 transition ease-in delay-500 bg-black w-full h-full ${hidden}`} src="/removebg.png" alt="" /> */}
-
-          <div
-            onMouseEnter={() => {
-              setHover3("1");
-              setHover4("1");
-              setHover2("1");
-              setHover("1");
-            }}
-            onMouseLeave={() => {
-              setHover2("2");
-              setHover3("3");
-              setHover4("4");
-            }}
-            className={`px-6 z-40 ${
-              hover != "1" && "blur-[2px]"
-            }  hover:bg-gradient-radial py-1  from-transparent to-cyan-400  transition ease-in delay-150 ${hidden} `}
-          >
-            <a className={`font-bold   `} href="/">
-              Home
-            </a>
-          </div>
-          {user && (
-            <div
-              onMouseEnter={() => {
-                setHover3("2");
-                setHover4("2");
-                setHover2("2");
-                setHover("2");
-              }}
-              onMouseLeave={() => {
-                setHover3("3");
-                setHover4("4");
-
-                setHover("1");
-              }}
-              className={`px-6 z-40 ${
-                hover2 != "2" && "blur-[2px]"
-              }   hover:bg-gradient-radial from-transparent to-cyan-400   py-1 font-bold transition ease-in delay-200 ${hidden}`}
-            >
-              <Link href="/my-profile">
-                <a1 className={`font-bold  `} href="/my-profile">
-                  Profile
-                </a1>
-              </Link>
-            </div>
-          )}
-
-          <div
-            onMouseEnter={() => {
-              setHover("4");
-              setHover2("4");
-              setHover3("4");
-            }}
-            onMouseLeave={() => {
-              setHover("1");
-              setHover2("2");
-              setHover3("3");
-            }}
-            className={`px-6  z-40  ${
-              hover4 != "4" && "blur-[2px]"
-            }   hover:bg-gradient-radial  py-1 from-transparent to-cyan-400   font-bold transition ease-in delay-300 ${hidden}`}
-          >
+          <div className="px-5">
             {!user ? (
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
@@ -146,23 +83,67 @@ function Navbar({ user }) {
                 type="icon"
                 shape="circle"
                 onError={() => {
-                  console.log("Login Failed");
+                  
                 }}
               />
+             
             ) : (
-              <button
-                onClick={() => logoutUser(user.email)}
-                className=" font-bold mt-1"
+              <div className="relative inline-block text-left px-2">
+              <div
+                id="dropdownDefaultButton"
+                aria-haspopup="true"
+                aria-expanded={isOpen ? 'true' : 'false'}
+                onClick={handleDropdownClick}
               >
-                <img src="/logoutL.svg" alt="logout" />
-              </button>
+                <img src="/menu.png" alt="" />
+              </div>
+              {isOpen && (
+                <div
+                  className={`origin-top-right absolute right-0 mt-2 w-44 rounded-lg shadow bg-white divide-y divide-gray-100 card  z-10 ${hidden}`}
+                  id="dropdown"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="dropdownDefaultButton"
+                >
+                  <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" role="none">
+                    <li>
+                      <Link
+                        href="#"
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        role="menuitem"
+                      >
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/my-profile"
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        role="menuitem"
+                      >
+                        Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <a
+                        onClick={() => logoutUser(user.email)}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        role="menuitem"
+                      >
+                        Sign out
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
             )}
           </div>
         </div>
       </div>
 
       <div
-        className={` sm:hidden fixed bottom-0  backdrop-blur  flex z-50  justify-between bg-black/20  from-transparent     w-full h-14 items-center  `}
+        className={`sm:hidden fixed bottom-0  backdrop-blur  flex z-50  justify-between bg-black/20  from-transparent     w-full h-14 items-center  `}
       >
         <div
           className={`text-white relative  w-full flex items-center h-14 justify-around`}
@@ -196,7 +177,7 @@ function Navbar({ user }) {
                 type="icon"
                 shape="circle"
                 onError={() => {
-                  console.log("Login Failed");
+                  
                 }}
               />
             ) : (

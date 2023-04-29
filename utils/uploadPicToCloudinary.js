@@ -15,7 +15,7 @@ let pick=[];
   
    pick.push( res.data.secure_url);
  
-    console.log(pick,"1")
+    
   } catch (error) {
     return;
   }

@@ -56,7 +56,7 @@ router.get("/:postId",async (req, res) => {
   router.post("/", authMiddleware, async (req, res) => {
     const { userId } = req;
     const data = req.body;
- console.log(data)
+ 
     try {
       const newPost = {
         user: userId,

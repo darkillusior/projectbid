@@ -7,10 +7,10 @@ async function connectDb() {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
-    console.log("Mongodb connected");
+    
   } catch (error) {
  
-    console.log(error);
+    
     process.exit(1);
   }
 }

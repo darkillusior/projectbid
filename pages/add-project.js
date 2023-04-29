@@ -8,14 +8,12 @@ import { submitNewPost } from "../utils/postActions";
 
 
 function AddProject({user}) {
-  if (typeof document === 'undefined') {
-    React.useLayoutEffect = React.useEffect;
-  }
+
   let picUrl=[]
     const[data,setFormvalues]=useState({
         projectname:"",
-        name:user.name,
-        userimg:user.userimg,
+        name:user?.name,
+        userimg:user?.userimg,
         description:"",
         tech:"",
         details:"",

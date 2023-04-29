@@ -28,7 +28,7 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBids,bidtrue,setbidtrue
         <>
           <form
             onSubmit={handleSubmit}
-            className={ " sm:w-1/2 p-3 h-fit flex flex-col shadow-2xl justify-center  shadow-black rounded-md bg-white  z-50 "+ styles.form2 
+            className={ "sm:w-1/2 p-3 h-fit flex flex-col shadow-2xl justify-center  shadow-black rounded-md bg-white  z-50 "+ styles.form2 
             }
           >
             <div className="m-2 flex justify-center">
@@ -38,7 +38,7 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBids,bidtrue,setbidtrue
               </h1>
             </div>{" "}
             <div className="m-2 flex justify-center">
-              <label className={ " m-2 " + styles.label}>Enter Phone No</label>
+              <label className={ "m-2 " + styles.label}>Enter Phone No</label>
               <input
                 className={
                 " text-slate-800 w-11/12 font-bold m-2 p-2 "+  styles.input 
@@ -50,9 +50,9 @@ function BidForm({ showBidForm, setShowBidForm,postId,setBids,bidtrue,setbidtrue
               ></input>
             </div>
             <div className="m-2 flex justify-center">
-              <label className={ " m-2 " + styles.label }>Enter BID Amount</label>
+              <label className={ "m-2 " + styles.label }>Enter BID Amount</label>
               <input
-                className={ " text-slate-800 w-11/12 font-bold m-2 p-2 " + styles.input   }
+                className={ "text-slate-800 w-11/12 font-bold m-2 p-2 " + styles.input   }
                 name="price"
                 value={data.price}
                 onChange={handleChange}

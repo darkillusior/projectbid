@@ -11,7 +11,7 @@ import Modal from "@/components/FullScreenModel";
 function Post({ postsData,user }) {
 
   const [post, setPost] = useState( postsData||[]);
-console.log(post)
+
   const [bid, setBids] = useState( post.bid||[]);
   const [idea, setIdea] = useState( post.idea||[]);
   const [viewdescription, setviewdescription] = useState(false);
