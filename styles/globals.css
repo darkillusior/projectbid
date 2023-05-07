@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background: black;
+  background: #0e1111;
   overflow-x: hidden;
 }
 @layer utilities {
@@ -472,6 +472,22 @@ section .colour:nth-child(3) {
   display: none;
 }
 
+
+.box-sign{
+  background-image: url(https://templatekit.jegtheme.com/acco/wp-content/uploads/sites/50/2021/02/08-scaled-e1614740007997.jpg);
+background-position: top bottom;
+background-repeat: no-repeat;
+background-size: cover;
+border-radius: 10px 10px 10px 10px;
+width: 65%;
+height: 300px;
+padding: 1.5rem 0;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+align-items: center;
+justify-content: center;
+}
 /* Header content responsive */
 @media screen and (max-width: 980px) {
   .column2 img {
@@ -489,6 +505,21 @@ section .colour:nth-child(3) {
 }
 
 @media screen and (max-width: 600px) {
+  .box-sign{
+    background-image: url(https://templatekit.jegtheme.com/acco/wp-content/uploads/sites/50/2021/02/08-scaled-e1614740007997.jpg);
+  background-position: top bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px 10px 10px 10px;
+  width: 95%;
+  height: 300px;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  }
   .column3{
     height: 100dvh;
   }

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { submitNewPost } from "@/utils/postActions";
 import uploadPic from "@/utils/uploadPicToCloudinary";
-export default function Modal({user}) {
+export default function Modal({user, setPost}) {
   
   const [showModal, setShowModal] = React.useState(false);
     
@@ -38,7 +38,7 @@ export default function Modal({user}) {
     picUrl = await uploadPic(pic);
      data.pic=picUrl
 
-await submitNewPost(data)
+await submitNewPost(data, setPost)
    }
   return (
     <>

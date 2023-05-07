@@ -80,10 +80,10 @@ router.get("/:postId",async (req, res) => {
       };
       
   
-      const post = await new BidModel(newPost).save();
+      await new BidModel(newPost).save();
   
       
-      return res.json(post);
+      return res.json(newPost);
     } catch (error) {
       console.error(error);
       return res.status(500).send(`Server error`);

@@ -105,11 +105,11 @@ function Navbar({ user }) {
                   aria-orientation="vertical"
                   aria-labelledby="dropdownDefaultButton"
                 >
-                  <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" role="none">
+                  <ul className="py-2 text-sm text-white dark:text-white font-bold" role="none">
                     <li>
                       <Link
-                        href="#"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        href="/"
+                        className="block px-4 py-2 hover:bg-black dark:hover:bg-black dark:hover:text-white"
                         role="menuitem"
                       >
                         Home
@@ -118,7 +118,7 @@ function Navbar({ user }) {
                     <li>
                       <Link
                         href="/my-profile"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        className="block px-4 py-2 hover:bg-black dark:hover:black dark:hover:text-white"
                         role="menuitem"
                       >
                         Profile
@@ -127,7 +127,7 @@ function Navbar({ user }) {
                     <li>
                       <a
                         onClick={() => logoutUser(user.email)}
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        className="block px-4 py-2 hover:black dark:hover:bg-black dark:hover:text-white"
                         role="menuitem"
                       >
                         Sign out

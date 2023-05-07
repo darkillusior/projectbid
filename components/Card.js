@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Image from 'next/image'
 function Card({post}) {
   
   return (
@@ -9,7 +9,7 @@ function Card({post}) {
     <div className=' flex   justify-center items-center p-1 '>    
 
      {/* <div className="text-bold text-base flex  text-yellow-300">     <img className={'h-12 w-12 m-2  rounded-full '+styles.userPic} src='/random.jpg '/>Gaurav Bahuguna</div> */}
-     <img className='w-full p-1 max-h-56   rounded-lg' src={post.img[0]}/>
+     <img className='w-full p-1 max-h-56   rounded-lg' src={post?.img[0]}/>
      </div>
       <div className="flex  items-center justify-between ">
  

@@ -5,7 +5,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import baseUrl from "../utils/baseUrl";
 import { redirectUser } from "../utils/authUser";
 export default function MyApp({ Component, pageProps }) {
-  return<GoogleOAuthProvider clientId={process.env.client_id}> <Component {...pageProps} /></GoogleOAuthProvider>
+  return<GoogleOAuthProvider clientId="129940256174-9l7p8a0gue14nm538ksk5ml2mq1ik1jr.apps.googleusercontent.com"> <Component {...pageProps} /></GoogleOAuthProvider>
 }
 MyApp.getInitialProps = async ({ Component, ctx }) => {
   const { token } = parseCookies(ctx);

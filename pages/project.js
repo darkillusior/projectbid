@@ -51,7 +51,7 @@ function Projects({ postsData, user }) {
     picUrl = await uploadPic(pic);
      data.pic=picUrl
 
-await submitNewPost(data)
+await submitNewPost(data, setPost)
    }
 
   return (
@@ -92,7 +92,7 @@ await submitNewPost(data)
         </div>
       </div>
       <div className="add-project-handler">
-        <AddProjectModel />
+        <AddProjectModel setPost={setPost} />
       </div>
     </div>
   );

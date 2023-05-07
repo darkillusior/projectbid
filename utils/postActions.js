@@ -9,12 +9,16 @@ export const Axios = axios.create({
 });
 
 export const submitNewPost = async (
-  data
+  data, setPost
 ) => {
   try {
  
-   await Axios.post("/post",  {data});
+  const res= await Axios.post("/post",  {data});
 
+    const newPost = {
+      ...res.data 
+    };
+   setPost(prev => [newPost, ...prev]);
   } catch (error) {
     const errorMsg = catchErrors(error);
     setError(errorMsg);

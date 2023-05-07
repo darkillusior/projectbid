@@ -49,13 +49,13 @@ setMedia(null);
       {showModal ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden h-screen overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
             <div className="relative h-screen my-6 mx-auto w-full">
          
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col gap-60 w-full h-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full bg-white outline-none focus:outline-none">
              
-           <form onSubmit={handleSubmit} className="flex items-center gap-10">
+           <form onSubmit={handleSubmit}>
            {media === null && mediaPreview === null ? (
             <>
               <input
@@ -66,12 +66,12 @@ setMedia(null);
                 type="file"
               />
               <div
-                className="flex flex-col items-center p-5 "
+                className="flex flex-col p-5 "
                 onClick={() => inputRef.current.click()}
               >
-                <h1 className="text-6xl text-gray-800" >
+                <h1 className="text-9xl" >
                     +</h1>
-                <h1 className="font-semibold text-gray-800 text-lg">Image</h1>
+                <h1 className="font-semibold text-lg">Image</h1>
               </div>
             </>
           ) : media != null && mediaPreview ? (
@@ -86,23 +86,19 @@ setMedia(null);
               <h1 className="font-semibold text-lg">Image</h1>
             </div>
           ) : null}
-         <div className="w-60 h-20  border-red-100">
-         <textarea 
-          className="h-full w-full"
+          <textarea 
             placeholder="Add discription"
             name="discription"
             value={info}
             onChange={(e)=>setinfo(e.target.value)}/>
-         </div>
 
-          <button className="text-white bg-green-500 rounded font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button">Update</button>
+          <button>Update</button>
           
        </form> 
           
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
-                    className="text-white bg-red-500 rounded font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
