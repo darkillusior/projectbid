@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import styles from "../styles/Home.module.css";
 import { bidPost,updateBidPost } from "../utils/postActions";
 function BidForm({ showBidForm, setShowBidForm,postId,setBids,bidtrue,setbidtrue,name}) {
   const [data, setData] = useState({
