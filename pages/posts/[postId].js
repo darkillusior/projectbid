@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import styles from "../../styles/Home.module.css";
 import {deletePost  } from "../../utils/postActions";
-import Slider from "../../components/tools/sliders";
+import Slider from "../../components/tools/Slider";
 import BidForm from "../../components/BidForm";
 import axios from "axios";
 import baseUrl from "../../utils/baseUrl";

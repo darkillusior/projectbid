@@ -2,7 +2,7 @@ import React, {  useState } from "react";
 import axios from "axios";
 import baseUrl from "../utils/baseUrl";
 
-import styles from "../styles/Home.module.css";
+
 
 import Card from "../components/Card";
 import uploadPic from "@/utils/uploadPicToCloudinary";
@@ -57,7 +57,7 @@ await submitNewPost(data, setPost)
   return (
     <div>
       <Navbar user={user} />
-      <div className={styles.bgI}>
+      <div >
         {/* <div  className='    pt-28  pb-14  gap-8 flex  flex-col  items-center'>
     <Filter options={options} onFilter={handleFilter}  /> */}
         <form onSubmit={handleSubmit} className="create-post">
