@@ -5,18 +5,15 @@ import baseUrl from "../utils/baseUrl";
 import styles from "../styles/Home.module.css";
 
 import Card from "../components/Card";
-import uploadPic from "@/utils/uploadPicToCloudinary";
-import { submitNewPost } from "@/utils/postActions";
+import uploadPic from "../utils/uploadPicToCloudinary";
+import { submitNewPost } from "../utils/postActions";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
 import AddProjectModel from "../components/AddProjectModel"
 
 function Projects({ postsData, user }) {
-  if (typeof document === "undefined") {
-    React.useLayoutEffect = React.useEffect;
-  }
+ 
   const [post, setPost] = useState(postsData || []);
-
   
   let picUrl=[]
     const[data,setFormvalues]=useState({
@@ -32,7 +29,9 @@ function Projects({ postsData, user }) {
     })
     
     const[pic,setPic]=useState([])
-    const picName = pic[0]
+    // const picName = pic[0]
+  
+  
     const handlechange=(e)=>{
         const{name,value}=e.target
         setFormvalues(prev =>({...prev,[name]:value}))
@@ -41,18 +40,15 @@ function Projects({ postsData, user }) {
 
     const handleSubmit = async (e)=>{
        
-      e.preventDefault();
-      
-      if (pic.length===0) {
-        alert("Please select an image file.");
-        return;
-      }
-    
+      // e.preventDefault();
+
+
     picUrl = await uploadPic(pic);
      data.pic=picUrl
 
-await submitNewPost(data, setPost)
+     await submitNewPost(data)
    }
+
 
   return (
     <div>
@@ -72,7 +68,8 @@ await submitNewPost(data, setPost)
         <svg className="w-7 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
         </svg>
-        {pic.length === 0 ? <span className="text-white leading-normal">upload image</span> : <span className="text-white text-xs leading-normal">{picName.name}</span>}
+        {/* {pic.length === 0 ? <span className="text-white leading-normal">upload image</span> : <span className="text-white text-xs leading-normal">{picName.name}</span>} */}
+        <span className="text-white leading-normal">upload image</span>
         <input required name="pic" multiple   onChange={(e)=>{setPic(e.target.files)}} type='file' className="hidden" />
     </label>
           </div>
