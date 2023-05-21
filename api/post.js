@@ -5,7 +5,7 @@ const BidModel = require("../models/BidModel");
 const router = express.Router();
 const authMiddleware = require("../middleware/authMiddleware");
 const UserModel = require("../models/UserModel");
-
+const ObjectId = require('mongodb').ObjectId;
 router.get("/",async (req, res) => {
   try {
    
@@ -58,7 +58,9 @@ router.get("/:postId",async (req, res) => {
     const data = req.body;
  
     try {
+      let id =ObjectId()
       const newPost = {
+        _id:id,
         user: userId,
         
        name:data.data.name,

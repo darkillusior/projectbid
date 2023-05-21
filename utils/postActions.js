@@ -20,8 +20,8 @@ export const submitNewPost = async (
     };
    setPost(prev => [newPost, ...prev]);
   } catch (error) {
-    const errorMsg = catchErrors(error);
-    setError(errorMsg);
+  
+    alert(catchErrors(error));
   }
 };
 
