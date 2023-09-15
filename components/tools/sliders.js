@@ -1,9 +1,5 @@
 
 import React, { useState, useEffect, useRef } from "react";
-
-
-
-
 let count = 0;
 let slideInterval;
 export default function Slider({img}) {
