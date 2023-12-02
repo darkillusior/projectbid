@@ -8,13 +8,14 @@ export const Axios = axios.create({
   headers: { Authorization: cookie.get("token") },
 });
 
-export const submitNewPost = async (data, setPost) => {
+export const submitNewPost = async (data, setPost, setLoading) => {
   try {
     const res = await Axios.post("/bids/post", { data });
 
     const newPost = {
       ...res.data,
     };
+    setLoading(false);
     setPost((prev) => [newPost, ...prev]);
   } catch (error) {
     alert(catchErrors(error));
