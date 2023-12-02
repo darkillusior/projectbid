@@ -7,7 +7,6 @@ import { redirectUser } from "../utils/authUser";
 export default function MyApp({ Component, pageProps }) {
   return (
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
-      {" "}
       <Component {...pageProps} />
     </GoogleOAuthProvider>
   );
