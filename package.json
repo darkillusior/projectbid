@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon -w server.js server.js ",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js ",
-    "export": "next export",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -23,6 +22,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.4.1",
     "next": "13.1.6",
+    "next-auth": "^4.24.5",
     "nodemon": "^2.0.18",
     "nookies": "^2.5.2",
     "react": "18.2.0",

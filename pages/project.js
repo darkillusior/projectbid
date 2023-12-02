@@ -14,7 +14,7 @@ import AddProjectModel from "../components/AddProjectModel"
 function Projects({ postsData, user }) {
  
   const [post, setPost] = useState(postsData || []);
-  
+  console.log(post)
   let picUrl=[]
     const[data,setFormvalues]=useState({
         projectname:"",
@@ -46,7 +46,7 @@ function Projects({ postsData, user }) {
     picUrl = await uploadPic(pic);
      data.pic=picUrl
 
-     await submitNewPost(data)
+     await submitNewPost(data, setPost)
    }
 
 
@@ -80,7 +80,7 @@ function Projects({ postsData, user }) {
         </div>
         </form>
         <div className="flex mt-4 mb-16 sm:my-16 flex-wrap justify-center items-center  gap-4">
-          {post.map((item, index) => (
+          {post?.map((item, index) => (
             <Link className="w-full sm:w-auto" key={index} href={`/posts/${item._id}`}>
               <Card key={index} post={item} />
             </Link>
@@ -98,9 +98,10 @@ export default Projects;
 
 export const getServerSideProps = async (ctx) => {
   try {
-    const res = await axios.get(`${baseUrl}/api/post`, {});
-
-    return { props: { postsData: res.data } };
+    const res = await fetch(`${baseUrl}/api/bids`);
+    const data = await res.json();
+    console.log(data)
+    return { props: { postsData: data } };
   } catch (error) {
     return { props: { errorLoading: true } };
   }

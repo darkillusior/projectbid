@@ -18,10 +18,10 @@ export const loginUser = async (user, setError, setLoading) => {
 
   try {
     const res = await axios.post(`${baseUrl}/api/auth`, { user });
-
     setToken(res.data);
   } catch (error) {
-    setError(catchErrors(error));
+    // setError(catchErrors(error));
+    console.log(error)
   }
 
 };

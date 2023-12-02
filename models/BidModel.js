@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const BidSchema= new Schema({
@@ -51,4 +51,4 @@ idea:{type:String}  ,
  
 });
 
-module.exports = mongoose.model("Bid",BidSchema  );
+export default mongoose.models?.Bid || mongoose.model("Bid", BidSchema);

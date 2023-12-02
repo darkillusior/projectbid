@@ -45,7 +45,9 @@ function Post({ postsData,user }) {
     }, 50);
     return () => clearTimeout(timeout);
   }, [text1]);
+  useEffect(()=>{
 
+  },[bid])
   return (
     <>
       <main className={styles.bg}>
@@ -154,7 +156,7 @@ function Post({ postsData,user }) {
                 </tr>
               </thead>
               <tbody className="">
-              {bid.map(bids=>(
+              {bid?.map(bids=>(
                  <tr className="bg-slate-900/50 border-slate-800 border hover:bg-slate-800/50 cursor-pointer ">
                  <td
                    className={
@@ -189,7 +191,7 @@ export const getServerSideProps = async (ctx) => {
   try {
     const { postId } = ctx.query;
     
-    const res = await axios.get(`${baseUrl}/api/post/${postId}`, {});
+    const res = await axios.get(`${baseUrl}/api/bids/${postId}`, {});
 
     return { props: { postsData: res.data } };
   } catch (error) {

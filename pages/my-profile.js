@@ -9,7 +9,6 @@ import Card from "@/components/Card";
 import Modal2 from "@/components/Modal2";
 function Profile({ user, postsData }) {
   const [post, setPost] = useState(postsData || []);
-
   const [Mybid, setshowMybid] = useState(false);
   const [Myidea, setshowMyidea] = useState(false);
   const [MyPost, setshowMyPost] = useState(false);
@@ -123,10 +122,10 @@ function Profile({ user, postsData }) {
                         />
                         {MyPost && (
                           <>
-                            {post.map((item, index) => (
+                            {post?.map((item, index) => (
                               <Link
                                 className="w-auto"
-                                href={`/posts/${item._id}`}
+                                href={`/posts/${item._id}`} key={[item._id]}
                               >
                                 <Card key={index} post={item} />
                               </Link>
@@ -151,11 +150,12 @@ export default Profile;
 export const getServerSideProps = async (ctx) => {
   try {
     const { token } = parseCookies(ctx);
+    console.log(token)
     const res = await axios.get(`${baseUrl}/api/profile`, {
       headers: { Authorization: token },
     });
-
-    return { props: { postsData: res.data } };
+    const data = res.data.post;
+    return { props: { postsData: data } };
   } catch (error) {
     return { props: { errorLoading: true } };
   }

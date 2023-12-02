@@ -5,7 +5,12 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import baseUrl from "../utils/baseUrl";
 import { redirectUser } from "../utils/authUser";
 export default function MyApp({ Component, pageProps }) {
-  return<GoogleOAuthProvider clientId="87"> <Component {...pageProps} /></GoogleOAuthProvider>
+  return (
+    <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
+      {" "}
+      <Component {...pageProps} />
+    </GoogleOAuthProvider>
+  );
 }
 MyApp.getInitialProps = async ({ Component, ctx }) => {
   const { token } = parseCookies(ctx);
@@ -23,13 +28,13 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
  if(token){
     try {
       
-      const res = await axios.get(`${baseUrl}/api/auth`, {
+      const res = await axios.get(`${baseUrl}/api/user`, {
         headers: { Authorization: token },
       
       });
 
       const { user } = res.data;
-      
+      console.log(user)
       pageProps.user = user;
    
     } catch (error) {

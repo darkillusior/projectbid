@@ -7,6 +7,7 @@ import Link from "next/link";
 function Navbar({ user }) {
   const [showCollapse, setShowCollapse] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [error, setError] = useState(null)
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
@@ -19,7 +20,7 @@ function Navbar({ user }) {
       jwtToken: credentialResponse.credential,
     };
 
-    await loginUser(user);
+    await loginUser(user, setError);
   };
   const [hidden, sethidden] = useState("");
   const [hidden2, sethidden2] = useState(false);
