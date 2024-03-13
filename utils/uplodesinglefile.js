@@ -8,7 +8,7 @@ const uploadSingleVideo = async files => {
     form.append("upload_preset", "debatable");
     form.append("cloud_name", "darkillisour");
 
-    const res = await axios.post(process.env.NEXT_PUBLIC_CLOUDINARY_URL2, form);
+    const res = await axios.post(process.env.CLOUDINARY_URL2, form);
     return res.data.secure_url;
   } catch (error) {
     return;

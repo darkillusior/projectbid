@@ -44,21 +44,38 @@ export const deletePost2 = async (postId, setMybids) => {
   }
 };
 
-export const bidPost = async (postId, data, setBids, setbidtrue) => {
+export const bidPost = async (
+  postId,
+  data,
+  setBids,
+  setbidtrue,
+  setLoading,
+  setShowBidForm
+) => {
   try {
     await Axios.post(`/bids/bid/${postId}`, { data });
 
     setBids((prev) => [data, ...prev]);
     setbidtrue(true);
+    setLoading(false);
+    setShowBidForm(false);
   } catch (error) {
     alert(catchErrors(error));
   }
 };
 
-export const updateBidPost = async (postId, data, setBids) => {
+export const updateBidPost = async (
+  postId,
+  data,
+  setBids,
+  setLoading,
+  setShowBidForm
+) => {
   try {
     await Axios.post(`/bids/updatebid/${postId}`, { data });
     setBids((prev) => [data, ...prev]);
+    setLoading(false);
+    setShowBidForm(false);
   } catch (error) {
     alert(catchErrors(error));
   }
